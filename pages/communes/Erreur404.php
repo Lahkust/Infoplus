@@ -13,6 +13,9 @@
 <!doctype html>
 <html lang="fr">
 
+	<header>
+		<?php include_once '../Entete.php' ?>
+	</header>
 
 <img src="../../images/icones/404.png" class="404"/>
 <br/>

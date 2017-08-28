@@ -5,7 +5,7 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-21 */
 /* Date de mise en ligne ........ : 2017-08-21 */
-/* Date de mise à jour .......... : 2017-08-21 */
+/* Date de mise à jour .......... : 2017-08-28 */
 /*******************************************************************************************************/
 /* Permet de gérer les services offerts et les promotions associées */
 /*******************************************************************************************************/
@@ -22,7 +22,7 @@
 	</head>
 	
 	<header>
-		<?php include_once 'EnteteAdmin.php' ?>
+		<?php include_once '../Entete.php' ?>
 	</header>
 	
 	<body>
@@ -39,8 +39,11 @@
 				print_r("<div class='service_price'>" . $row["tarif"]. "</div><br/>");
 				print_r("<div class='service_duration'>" . $row["duree"]. "</div><br/>");
 				print_r("<div class='promotion_title'>Promotions</div><br/>");
+				
+				
 				foreach($dbh->query('SELECT * FROM promotion JOIN ta_promotion_service ON promotion.pk_promotion = ta_promotion_service.fk_promotion AND ta_promotion_service.fk_service = '.$row["pk_service"]) as $row2) {
-					//
+					
+					
 					print_r($row2["rabais"]);
 				}
 				

@@ -5,7 +5,7 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-21 */
 /* Date de mise en ligne ........ : 2017-08-21 */
-/* Date de mise à jour .......... : 2017-08-23 */
+/* Date de mise à jour .......... : 2017-08-28 */
 /*******************************************************************************************************/
 /* Catalogue */
 /*******************************************************************************************************/
@@ -13,14 +13,15 @@
 <!doctype HTML>
 <html lang="fr">
 	
+	
 	<head>
 		<meta charset="utf-8">
-		<title>Catalogue</title>
+		<title>Connexion</title>
 		<link rel="stylesheet" href="../../styles/style.css"/>
 	</head>
 	
 	<header>
-		<?php include_once 'EnteteClient.php' ?>
+		<?php include_once '../Entete.php' ?>
 	</header>
 	
 	<body>
