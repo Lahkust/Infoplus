@@ -22,7 +22,7 @@
 	</head>
 	
 	<header>
-		<?php include_once '../Entete.php' ?>
+		<?php include_once 'pages/Entete.php' ?>
 	</header>
 	
 	<body>
