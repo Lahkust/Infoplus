@@ -1,0 +1,43 @@
+/*Body*/
+body {
+	font-family:"Century Gothic";
+}
+
+/*En-tête*/
+.backgroundEntete {
+	background-color:#09AAC1;
+}
+
+.infoPlusPlus {
+	padding-top: 25px;
+	padding-left: 25px;
+}
+
+.optionEntete {
+	position:absolute;
+	top: 4%;
+    right: 5%;
+}
+
+.optionEnteteText {
+	color:#FFFAFB;
+	font-size:0.625em;
+}
+
+.optionEnteteClient {
+	position:absolute;
+	top:8%;
+	right:10%;
+}
+
+.optionRouge {
+	color:#FF4A07;
+	font-size:0.875em;
+	text-decoration: none;
+}
+
+.optionOrange {
+	color:#FF9F07;
+	font-size:0.875em;
+	text-decoration: none;
+}
