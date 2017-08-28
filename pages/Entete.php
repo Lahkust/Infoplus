@@ -1,13 +1,13 @@
 <!-- /**************************************************************************************************/
 /* Fichier ...................... : EnteteNonConnect.php */
 /* Type ......................... : Document PHP */
-/* Titre ........................ : Entête utilisateur non connecté*/
+/* Titre ........................ : Entête pour le site*/
 /* Auteur ....................... : Christopher Brown */
 /* Date de création ............. : 2017-08-21 */
 /* Date de mise en ligne ........ : 2017-08-21 */
-/* Date de mise à jour .......... : 2017-08-23 */
+/* Date de mise à jour .......... : 2017-08-28 */
 /*******************************************************************************************************/
-/* Entête utilisateur non connecté */
+/* Entête pour le site. L'entête change s'il y a un utilisateur, administrateur ou personne de connecté. */
 /*******************************************************************************************************/
 -->
 <!DOCTYPE HTML>
@@ -15,12 +15,14 @@
 <head>
 	<link rel="stylesheet" href="../../styles/style.css">
 </head>
+<body>
 <div class="backgroundEntete">
 	<img src="../../images/icones/logo.png" class="infoPlusPlus" Title="Info++"/>
 	<?php
 
 	if (isset($_GET['client'])) {
 	echo "Tu es un client";
+	}
 	?>
 	<div class="optionEntete">
 		<a href="" class="optionEnteteText">Mon panier (1)</a>
@@ -45,4 +47,5 @@
 	}*/
 	?>
 </div>
+</body>
 </html>
