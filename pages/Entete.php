@@ -10,9 +10,6 @@
 /* Entête pour le site. L'entête change s'il y a un utilisateur, administrateur ou personne de connecté. */
 /*******************************************************************************************************/
 -->
-<?php
-	session_start (); 
-?>
 <!DOCTYPE HTML>
 <html lang="fr">
 <head>
@@ -23,15 +20,17 @@
 		<img src="../../images/icones/logo.png" class="infoPlusPlus" Title="Info++"/>
 		<?php
 		
-		$_SESSION['administrateur'] = '1';
+		//$_SESSION['administrateur'] = '1';
 		
+		//Commence par vérifier si il a une variable administrateur
 		if (isset($_SESSION['administrateur'])) {
 			
+			//si c'est un client
 			if ($_SESSION['administrateur'] == 0) {
 				?>
 				<div class="optionEntete">
 					<a href="./communes/Erreur404.php" class="optionEnteteText">Mon panier (1)</a>
-					<a href="./Logout.php" class="optionEnteteText">Se déconnecter</a>
+					<a href="./pages/communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
 				</div>
 				<div class="optionEnteteClient">
 					<a href="" class="optionRouge" >Catalogue</a>
@@ -42,10 +41,11 @@
 					
 				</div>
 				<?php
+				//si c'est un admin
 			} else {
 				?>
 				<div class="optionEntete">
-					<a href="./Logout.php" class="optionEnteteText">Se déconnecter</a>
+					<a href="./pages/communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
 				</div>
 				<div class="optionEnteteClient">
 					<a href="" class="optionRouge" >Service</a>
@@ -55,6 +55,7 @@
 				</div>
 				<?php
 			}
+			//sinon un visiteur
 		} else {
 			 ?><a class="optionUtilsiateur" href="">S'identifier</a><?php
 		}
