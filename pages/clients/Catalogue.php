@@ -12,7 +12,12 @@
 -->
 <!doctype HTML>
 <html lang="fr">
-	
+	<?php 
+	if (isset($_SESSION['administrateur'])) 
+	{
+		echo "is set";
+	}
+		?>
 	
 	<head>
 		<meta charset="utf-8">

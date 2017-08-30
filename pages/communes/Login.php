@@ -18,11 +18,8 @@
    define('DB_PASSWORD', '');
    define('DB_DATABASE', 'infoplus');
    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-   session_start();
    
    if($_SERVER["REQUEST_METHOD"] == "POST") {
-      // username and password sent from form 
-      
       $dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
 	  $is_admin=0;
 	  $is_in_db = false;

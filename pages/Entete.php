@@ -12,6 +12,7 @@
 -->
 <!DOCTYPE HTML>
 <html lang="fr">
+<?php	 session_start(); ?>
 <head>
 	<link rel="stylesheet" href="../../styles/style.css">
 </head>
