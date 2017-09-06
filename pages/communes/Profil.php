@@ -5,7 +5,7 @@
 /* Auteur ....................... : Christopher Brown */
 /* Date de création ............. : 2017-08-30 */
 /* Date de mise en ligne ........ : 2017-08-30 */
-/* Date de mise à jour .......... : 2017-08-30 */
+/* Date de mise à jour .......... : 2017-09-06 */
 /*******************************************************************************************************/
 /* Inscription pour un utilisateur */
 /*******************************************************************************************************/
@@ -31,6 +31,10 @@
 		<title>Connexion</title>
 		<link rel="stylesheet" href="../../styles/style.css"/>
 	</head>
+	
+	<header>
+		<?php include_once '../Entete.php' ?>
+	</header>
 	
 	<body>
 		
@@ -62,7 +66,8 @@
 
 						mysqli_close($conn);
 					?>
-				</select>
+				</select><br/>
+				
 				<input type="text" name="codepostal" value="Code Postal" required>
 				<input type="text" name="notelephone" value="Numéro de téléphone" required>
 				
@@ -72,21 +77,21 @@
 				</p>
 				<!-- Courriel -->
 				<input type="email" name="mail" value="Courriel" required/>
+				<input type="email" name="confirmermail" value="Confirmer Courriel" required/><br/>
 				
 				<!-- Mot de passe -->
 				<input type="password" name="password" value="Mot de passe" required/>
+				<input type="password" name="confirmerpassword" value="Confirmer Mot de passe" required/>
 				</br>
 				
-				<!-- Connexion -->
-				<a href="http://www.perdu.com">
-					<img src="../../images/icones/boutonConnexion.png" class="button"/>
+				<input type="checkbox" name="infolettre" value="infolettre" checked> Souhaitez-vous recevoir les promotions et les nouveautés<br>
+				
+				<!-- Confirmer -->
+				<a href="#">
+					<img src="../../images/icones/boutonConfirmer.png" class="button"/>
 				</a>
 				</br>
-				<!-- S'inscrire -->
-				<a href="../clients/Inscription.php">
-					<img src="../../images/icones/boutonInscription.png" class="button"/>
-				</a>
-				X(infolettre BD) Souhaitez-vous recevoir les promotions et les nouveautés
+				
 			</fieldset>
 		</form>
 		
