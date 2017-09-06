@@ -1,6 +1,7 @@
 /*Body*/
 body {
 	font-family:"Century Gothic";
+    background-color: lightblue;
 }
 
 /*En-tête*/
@@ -40,4 +41,9 @@ body {
 	color:#FF9F07;
 	font-size:0.875em;
 	text-decoration: none;
+}
+
+.imgButton {
+	max-height: 14px;
+	width: auto;
 }

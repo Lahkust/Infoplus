@@ -11,6 +11,12 @@
 /*******************************************************************************************************/
 -->
 <!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Connexion</title>
+		<link rel="stylesheet" href="../../styles/style.css">
+	</head>
 
 <?php
    define('DB_SERVER', 'localhost');
@@ -42,13 +48,7 @@
    }
 ?>
 
-<html lang="fr">
 	
-	<head>
-		<meta charset="utf-8">
-		<title>Connexion</title>
-		<link rel="stylesheet" href="../../styles/style.css"/>
-	</head>
 	
 	<header>
 		<?php include_once '../Entete.php' ?>
@@ -72,12 +72,12 @@
 			</br>
 			<!-- Connexion -->
 			<input type = "submit" value = " Submit ">
-				<img src="../../images/icones/boutonConnexion.png" class="button"/>
+				<img src="../../images/icones/boutonConnexion.png" class="imgButton"/>
 			</input>
 			</br>
 			<!-- S'inscrire -->
 			<a href="../clients/Inscription.php">
-				<img src="../../images/icones/boutonInscription.png" class="button"/>
+				<img src="../../images/icones/boutonInscription.png" class="imgButton"/>
 			</a>
 			</br>
 			<!-- Connexion avec Facebook -->
