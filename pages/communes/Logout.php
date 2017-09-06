@@ -11,6 +11,7 @@
 /*******************************************************************************************************/
 -->
 <?php
+session_start();
 unset($_SESSION['administrateur']);
 // On détruit les variables de notre session
 session_unset ();

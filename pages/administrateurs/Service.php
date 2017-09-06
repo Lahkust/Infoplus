@@ -5,7 +5,7 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-21 */
 /* Date de mise en ligne ........ : 2017-08-21 */
-/* Date de mise à jour .......... : 2017-08-28 */
+/* Date de mise à jour .......... : 2017-09-06 */
 /*******************************************************************************************************/
 /* Permet de gérer les services offerts et les promotions associées */
 /*******************************************************************************************************/
@@ -14,7 +14,7 @@
 
 <!doctype HTML>
 <html lang="fr">
-	
+	<?php	 session_start(); ?>
 	<head>
 		<meta charset="utf-8">
 		<title>Service</title>

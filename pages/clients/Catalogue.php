@@ -5,19 +5,14 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-21 */
 /* Date de mise en ligne ........ : 2017-08-21 */
-/* Date de mise à jour .......... : 2017-08-28 */
+/* Date de mise à jour .......... : 2017-09-06 */
 /*******************************************************************************************************/
 /* Catalogue */
 /*******************************************************************************************************/
 -->
 <!doctype HTML>
 <html lang="fr">
-	<?php 
-	if (isset($_SESSION['administrateur'])) 
-	{
-		echo "is set";
-	}
-		?>
+<?php	 session_start(); ?>
 	
 	<head>
 		<meta charset="utf-8">
@@ -30,7 +25,12 @@
 	</header>
 	
 	<body>
-		
+			<?php 
+	if (isset($_SESSION['administrateur'])) 
+	{
+		echo "is set";
+	}
+		?>
 <?php
 	try {
 		$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
