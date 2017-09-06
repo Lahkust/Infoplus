@@ -31,7 +31,7 @@
 				?>
 				<div class="optionEntete">
 					<a href="./communes/Erreur404.php" class="optionEnteteText">Mon panier (1)</a>
-					<a href="./pages/communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
+					<a href="./Logout.php" class="optionEnteteText">Se déconnecter</a>
 				</div>
 				<div class="optionEnteteClient">
 					<a href="" class="optionRouge" >Catalogue</a>
@@ -46,7 +46,7 @@
 			} else {
 				?>
 				<div class="optionEntete">
-					<a href="./pages/communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
+					<a href="./Logout.php" class="optionEnteteText">Se déconnecter</a>
 				</div>
 				<div class="optionEnteteClient">
 					<a href="" class="optionRouge" >Service</a>
