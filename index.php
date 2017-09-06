@@ -1,25 +1,55 @@
 <!-- /**************************************************************************************************/
 /* Fichier ...................... : index.php */
 /* Type ......................... : Document PHP */
-/* Titre ........................ : index*/
+/* Titre ........................ : Login*/
 /* Auteur ....................... : Guillaume Bergs */
-/* Date de création ............. : 2017-08-23 */
-/* Date de mise en ligne ........ : 2017-08-23 */
+/* Date de création ............. : 2017-08-21 */
+/* Date de mise en ligne ........ : 2017-08-21 */
 /* Date de mise à jour .......... : 2017-09-06 */
 /*******************************************************************************************************/
-/* index */
+/* Login */
 /*******************************************************************************************************/
 -->
-
-<!doctype HTML>
+<!doctype html>
 <html lang="fr">
-	<?php	 session_start(); ?>
-	
+<?php	 session_start(); ?>
 	<head>
 		<meta charset="utf-8">
 		<title>Connexion</title>
-		<link rel="stylesheet" href="../../styles/style.css"/>
+		<link rel="stylesheet" href="styles/style.css">
 	</head>
+
+<?php
+   define('DB_SERVER', 'localhost');
+   define('DB_USERNAME', 'root');
+   define('DB_PASSWORD', '');
+   define('DB_DATABASE', 'infoplus');
+   $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      $dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
+	  $is_admin=0;
+	  $is_in_db = false;
+	  foreach($dbh->query('SELECT * from utilisateur') as $row)
+	  {
+		  if(($row["courriel"]==$_POST["mail"])&&($row["mot_de_passe"])==$_POST["password"])
+		{
+			$is_in_db = true;
+			$is_admin = $row["administrateur"];
+		}
+	  }
+		
+      if($is_in_db) {
+         $_SESSION['mail'] = $mymail;
+		 $_SESSION['administrateur'] = $is_admin;
+         header("location: pages/clients/Catalogue.php");
+      }else {
+         echo "<script type='text/javascript'>alert('Courriel ou mot de passe invalide!')</script>";
+      }
+   }
+?>
+
+	
 	
 	<header>
 		<?php include_once 'pages/Entete.php' ?>
@@ -27,27 +57,35 @@
 	
 	<body>
 		
-<?php
-	try {
-		$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
-		foreach($dbh->query('SELECT * from service') as $row) {
-			
-			print_r("<div class='service_entry'>");
-				print_r("<img src='../../images/services/" . $row["image"]. ".png' class='img_service'/><br/>");
-				print_r("<div class='service_title'>" . $row["service_titre"]. "</div><br/>");
-				print_r("<div class='service_description'>" . $row["service_description"]. "</div><br/>");
-				print_r("<div class='service_price'>" . $row["tarif"]. "</div><br/>");
-				print_r("<div class='service_duration'>" . $row["duree"]. "</div><br/>");
-				print_r("<div class='btn_add'><a href='http://www.perdu.com'><img src='../../images/icones/panier.png' class='btn_add'/></a></div>");
-			print_r("</div");
-			print_r("<br/><br/>");
-		}
-		$dbh = null;
-	} catch (PDOException $e) {
-		print "Error!: " . $e->getMessage() . "<br/>";
-		die();
-	}
-?>
+		<form method="post"  action = "" enctype="multipart/form-data">
+			<!-- Intitulé -->
+			<p>
+				Veuillez-vous identifier pour avoir la possibilité d'acheter des formations.
+			</p>
+			<!-- Courriel -->
+			<label>Courriel  :</label><input type = "text" name = "mail" class = "box" required/>
+			</br>
+			<!-- Mot de passe -->
+			<label>Mot de passe  :</label><input type = "password" name = "password" class = "box" required/>
+			</br>
+			<!-- Mot de passe oublié -->
+			<a href="http://www.perdu.com">Mot de passe oublié<a>
+			</br>
+			<!-- Connexion -->
+			<input type="image" src="images/icones/boutonConnexion.png" class="imgButton" alt="Connexion" />
+			</br>
+			<!-- S'inscrire -->
+			<a href="pages/clients/Inscription.php">
+				<img src="images/icones/boutonInscription.png" class="imgButton" alt="Inscription"/>
+			</a>
+			</br>
+			<!-- Connexion avec Facebook -->
+			<a href="http://www.perdu.com">
+				<img src="images/icones/facebook.png" class="imgButton"/>
+			</a>
+			</br>
+		</form>
+
 	</body>
 	
 	<footer>

@@ -72,18 +72,16 @@
 			<a href="http://www.perdu.com">Mot de passe oublié<a>
 			</br>
 			<!-- Connexion -->
-			<input type = "submit" value = " Submit ">
-				<img src="../../images/icones/boutonConnexion.png" class="imgButton"/>
-			</input>
+			<input type="image" src="../../images/icones/boutonConnexion.png" class="imgButton" alt="Connexion" />
 			</br>
 			<!-- S'inscrire -->
 			<a href="../clients/Inscription.php">
-				<img src="../../images/icones/boutonInscription.png" class="imgButton"/>
+				<img src="../../images/icones/boutonInscription.png" class="imgButton" alt="Inscription"/>
 			</a>
 			</br>
 			<!-- Connexion avec Facebook -->
 			<a href="http://www.perdu.com">
-				<img src="../../images/icones/facebook.png" class="button"/>
+				<img src="../../images/icones/facebook.png" class="imgButton"/>
 			</a>
 			</br>
 		</form>
