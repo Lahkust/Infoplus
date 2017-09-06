@@ -25,7 +25,12 @@
 	</header>
 	
 	<body>
-
+			<?php 
+	if (isset($_SESSION['administrateur'])) 
+	{
+		echo "is set";
+	}
+		?>
 <?php
 	try {
 		$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
