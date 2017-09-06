@@ -1,66 +1,41 @@
 <!-- /**************************************************************************************************/
 /* Fichier ...................... : index.php */
 /* Type ......................... : Document PHP */
-/* Titre ........................ : Login*/
+/* Titre ........................ : index*/
 /* Auteur ....................... : Guillaume Bergs */
-/* Date de création ............. : 2017-08-21 */
-/* Date de mise en ligne ........ : 2017-08-21 */
+/* Date de création ............. : 2017-08-23 */
+/* Date de mise en ligne ........ : 2017-08-23 */
 /* Date de mise à jour .......... : 2017-09-06 */
 /*******************************************************************************************************/
-/* Login */
+/* index */
 /*******************************************************************************************************/
 -->
-<!doctype html>
+
+<!doctype HTML>
 <html lang="fr">
-<?php	 session_start(); ?>
+	<?php	 session_start(); ?>
+	
 	<head>
 		<meta charset="utf-8">
 		<title>Connexion</title>
+<<<<<<< HEAD
 		<link rel="stylesheet" href="styles/style.css">
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+=======
+		<link rel="stylesheet" href="../../styles/style.css"/>
+>>>>>>> origin/master
 	</head>
-
-<?php
-   define('DB_SERVER', 'localhost');
-   define('DB_USERNAME', 'root');
-   define('DB_PASSWORD', '');
-   define('DB_DATABASE', 'infoplus');
-   $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      $dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
-	  $is_admin=0;
-	  $is_in_db = false;
-	  foreach($dbh->query('SELECT * from utilisateur') as $row)
-	  {
-		  if(($row["courriel"]==$_POST["mail"])&&($row["mot_de_passe"])==$_POST["password"])
-		{
-			$is_in_db = true;
-			$is_admin = $row["administrateur"];
-		}
-	  }
-		
-      if($is_in_db) {
-         $_SESSION['mail'] = $mymail;
-		 $_SESSION['administrateur'] = $is_admin;
-         header("location: pages/clients/Catalogue.php");
-      }else {
-         echo "<script type='text/javascript'>alert('Courriel ou mot de passe invalide!')</script>";
-      }
-   }
-?>
-
-	
 	
 	<header>
 		<?php include_once 'pages/Entete.php' ?>
 	</header>
 	
 	<body>
+<<<<<<< HEAD
 		<main>
 			<form method="post"  action = "" enctype="multipart/form-data">
 				<!-- Intitulé -->
@@ -123,6 +98,30 @@
 			</form>
 		</main>
 
+=======
+		
+<?php
+	try {
+		$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
+		foreach($dbh->query('SELECT * from service') as $row) {
+			
+			print_r("<div class='service_entry'>");
+				print_r("<img src='../../images/services/" . $row["image"]. ".png' class='img_service'/><br/>");
+				print_r("<div class='service_title'>" . $row["service_titre"]. "</div><br/>");
+				print_r("<div class='service_description'>" . $row["service_description"]. "</div><br/>");
+				print_r("<div class='service_price'>" . $row["tarif"]. "</div><br/>");
+				print_r("<div class='service_duration'>" . $row["duree"]. "</div><br/>");
+				print_r("<div class='btn_add'><a href='http://www.perdu.com'><img src='../../images/icones/panier.png' class='btn_add'/></a></div>");
+			print_r("</div");
+			print_r("<br/><br/>");
+		}
+		$dbh = null;
+	} catch (PDOException $e) {
+		print "Error!: " . $e->getMessage() . "<br/>";
+		die();
+	}
+?>
+>>>>>>> origin/master
 	</body>
 	
 	<footer>
