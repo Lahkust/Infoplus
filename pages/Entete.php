@@ -30,8 +30,8 @@
 			if ($_SESSION['administrateur'] == 0) {
 				?>
 				<div class="optionEntete">
-					<a href="./communes/Erreur404.php" class="optionEnteteText">Mon panier (1)</a>
-					<a href="./Logout.php" class="optionEnteteText">Se déconnecter</a>
+					<a href="../communes/Erreur404.php" class="optionEnteteText">Mon panier (1)</a>
+					<a href="../communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
 				</div>
 				<div class="optionEnteteClient">
 					<a href="" class="optionRouge" >Catalogue</a>
@@ -46,7 +46,7 @@
 			} else {
 				?>
 				<div class="optionEntete">
-					<a href="./Logout.php" class="optionEnteteText">Se déconnecter</a>
+					<a href="../communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
 				</div>
 				<div class="optionEnteteClient">
 					<a href="" class="optionRouge" >Service</a>
@@ -58,7 +58,7 @@
 			}
 			//sinon un visiteur
 		} else {
-			 ?><a class="optionUtilsiateur" href="">S'identifier</a><?php
+			 ?><a class="optionUtilisateur" href="">S'identifier</a><?php
 		}
 		?>
 	</div>

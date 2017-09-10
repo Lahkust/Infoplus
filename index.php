@@ -5,7 +5,7 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-23 */
 /* Date de mise en ligne ........ : 2017-08-23 */
-/* Date de mise à jour .......... : 2017-09-06 */
+/* Date de mise à jour .......... : 2017-09-10 */
 /*******************************************************************************************************/
 /* index */
 /*******************************************************************************************************/
@@ -30,6 +30,36 @@
 	<header>
 		<?php include_once 'pages/Entete.php' ?>
 	</header>
+	
+<?php
+   define('DB_SERVER', 'localhost');
+   define('DB_USERNAME', 'root');
+   define('DB_PASSWORD', '');
+   define('DB_DATABASE', 'infoplus');
+   $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+   
+   if($_SERVER["REQUEST_METHOD"] == "POST") {
+      $dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
+	  $is_admin=0;
+	  $is_in_db = false;
+	  foreach($dbh->query('SELECT * from utilisateur') as $row)
+	  {
+		  if(($row["courriel"]==$_POST["mail"])&&($row["mot_de_passe"])==$_POST["password"])
+		{
+			$is_in_db = true;
+			$is_admin = $row["administrateur"];
+		}
+	  }
+		
+      if($is_in_db) {
+         $_SESSION['mail'] = $mymail;
+		 $_SESSION['administrateur'] = $is_admin;
+         header("location: pages/clients/Catalogue.php");
+      }else {
+         echo "<script type='text/javascript'>alert('Courriel ou mot de passe invalide!')</script>";
+      }
+   }
+?>
 	
 	<body>
 		<main>
