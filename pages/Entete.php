@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div class="backgroundEntete">
-		<img src="../../images/icones/logo.png" class="infoPlusPlus col-3" Title="Info++"/>
+		<img src="../../images/icones/logo.png" class="infoPlusPlus" Title="Info++"/>
 		<?php
 		
 		//Commence par vérifier si il a une variable administrateur
@@ -27,38 +27,41 @@
 			//si c'est un client
 			if ($_SESSION['administrateur'] == 0) {
 				?>
-				<div class="row 3">
-					<div class="optionEntete col-6">
-						<a href="../communes/Erreur404.php" class="optionEnteteText">Mon panier (1)</a>
-						<a href="../communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
-					</div>
-					<div class="optionEnteteClient col-6">
-						<a href="" class="optionRouge" >Catalogue</a>
-						<a href="../communes/Profil.php" class="optionOrange" >Profil</a>
-						
-						<input type="text" name="recherche" >
-						<img src="../../images/icones/loupe.png" Title="Rechercher"/>
-						
+				<div class="right col-3">
+					<div class="row">
+						<a href="../communes/Erreur404.php" class="optionEnteteText col-6">Mon panier (1)</a>
+						<a href="../communes/Logout.php" class="optionEnteteText col-6">Se déconnecter</a>
 					</div>
 				</div>
+				<div class="row">
+					<a href="./Catalogue.php" class="optionRouge col-1" >Catalogue</a>
+					<a href="../communes/Profil.php" class="optionOrange col-1" >Profil</a>
+					<div class="col-3">
+						<input type="text" name="recherche" >
+						<img src="../../images/icones/loupe.png" Title="Rechercher"/>
+					<div>
+				</div>
+				
 				<?php
 				//si c'est un admin
 			} else {
 				?>
-				<div class="optionEntete">
-					<a href="../communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
+				<a  class="optionEnteteText right col-1" href="../communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
+					
+				<div class="row">
+					<a href="./Catalogue.php" class="optionRouge col-1" >Service</a>
+					<a href="../communes/Erreur404.php" class="optionOrange col-1" >Facture</a>
+					<div class="col-2">
+						<input type="text" name="recherche" >
+						<img src="../../images/icones/loupe.png" Title="Rechercher"/>
+					</div>
 				</div>
-				<div class="optionEnteteClient">
-					<a href="" class="optionRouge" >Service</a>
-					<a href="" class="optionOrange" >Facture</a>	
-					<input type="text" name="recherche" >
-					<img src="../../images/icones/loupe.png" Title="Rechercher"/>
-				</div>
+					
 				<?php
 			}
 			//sinon un visiteur
 		} else { ?>
-			<a class="col-2" href="../../index.php">S'identifier</a><?php
+			<a class="right col-1 optionEnteteText" href="../../index.php">S'identifier</a><?php
 		}
 		?>
 	</div>

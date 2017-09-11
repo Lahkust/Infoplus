@@ -8,9 +8,13 @@ body {
 	background-color:#09AAC1;
 }
 
+.right {
+    float: right;
+	padding:1%;
+}
+
 .infoPlusPlus {
-	padding-top: 25px;
-	padding-left: 25px;
+	padding:1%;
 }
 
 .optionEntete {
@@ -18,10 +22,11 @@ body {
 	top: 4%;
     right: 5%;
 }
-
+ 
 .optionEnteteText {
 	color:#FFFAFB;
-	font-size:0.625em;
+	font-size:10px;
+	text-decoration: underline;
 }
 
 .optionEnteteClient {
@@ -32,13 +37,11 @@ body {
 
 .optionRouge {
 	color:#FF4A07;
-	font-size:0.875em;
 	text-decoration: none;
 }
 
 .optionOrange {
 	color:#FF9F07;
-	font-size:0.875em;
 	text-decoration: none;
 }
 
