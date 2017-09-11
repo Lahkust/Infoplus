@@ -109,10 +109,18 @@ input, select {
 	margin-left:70%;
 }
 
-
-input[type=text] {
+input[type=text]{
     width: 49%;
 }
+
+input[type=email]{
+    width: 49%;
+}
+
+input[type=password]{
+    width: 49%;
+}
+
 .rue {
 	width: 8%;
 }

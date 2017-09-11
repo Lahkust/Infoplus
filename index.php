@@ -48,7 +48,7 @@
 		{
 			$is_in_db = true;
 			$is_admin = $row["administrateur"];
-			$pk_utilisateur = $row["administrateur"];
+			$pk_utilisateur = $row["pk_utilisateur"];
 		}
 	  }
 		
