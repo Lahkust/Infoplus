@@ -58,7 +58,6 @@
 			}
 			//sinon un visiteur
 		} else { ?>
-			<div class="col-7"></div>
 			<a class="col-2" href="../../index.php">S'identifier</a><?php
 		}
 		?>
