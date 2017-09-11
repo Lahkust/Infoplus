@@ -67,60 +67,60 @@
 			<form method="post"  action = "" enctype="multipart/form-data">
 				<!-- Intitulé -->
 				<div class="row">
-					<div class="col-3"></div>
-					<div class="col-6">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
 						Veuillez-vous identifier pour avoir la possibilité d'acheter des formations.
 					</div>
-					<div class="col-3"></div>
+					<div class="col-md-3"></div>
 				</div>
 				
 				<!-- Courriel -->
 				<div class="row">
-					<div class="col-4"></div>
-					<input type = "text" name = "mail" class = "box col-4" required/>
-					<div class="col-4"></div>
+					<div class="col-md-4"></div>
+					<input type = "text" name = "mail" class = "box col-md-4" required/>
+					<div class="col-md-4"></div>
 				</div>
 				
 				<!-- Mot de passe -->
 				<div class="row">
-					<div class="col-4"></div>
-					<input type = "password" name = "password" class = "box col-4" required/>
-					<div class="col-4"></div>
+					<div class="col-md-4"></div>
+					<input type = "password" name = "password" class = "box col-md-4" required/>
+					<div class="col-md-4"></div>
 				</div>
 				
 				<!-- Mot de passe oublié -->
 				<div class="row">
-					<div class="col-4"></div>
-					<div class="col-4">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
 						<a href="pages/communes/Erreur404.php">Mot de passe oublié</a>
 					</div>
-					<div class="col-4"></div>
+					<div class="col-md-4"></div>
 				</div>
 				
 				<!-- Connexion -->
 				<div class="row">
-					<div class="col-5"></div>
-					<div class="col-1">
+					<div class="col-md-5"></div>
+					<div class="col-md-1">
 						<input type="image" src="images/icones/boutonConnexion.png" class="imgButton" alt="Connexion" />
 					</div>
 					<!-- S'inscrire -->
-					<div class="col-1">
+					<div class="col-md-1">
 						<a href="pages/communes/Profil.php">
 							<img src="images/icones/boutonInscription.png" class="imgButton" alt="Inscription"/>
 						</a>
 					</div>
-					<div class="col-5"></div>
+					<div class="col-md-5"></div>
 				</div>
 				
 				<!-- Connexion avec Facebook -->
 				<div class="row">
-					<div class="col-4"></div>
-					<div class="col-4">
+					<div class="col-md-4"></div>
+					<div class="col-md-4">
 						<a href="pages/communes/Erreur404.php">
 							<img src="images/icones/facebook.png" class="imgButton"/>
 						</a>
 					</div>
-					<div class="col-4"></div>
+					<div class="col-md-4"></div>
 				</div>
 			</form>
 		</main>
