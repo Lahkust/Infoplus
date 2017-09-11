@@ -35,7 +35,7 @@
 				</div>
 				<div class="optionEnteteClient">
 					<a href="" class="optionRouge" >Catalogue</a>
-					<a href="" class="optionOrange" >Profil</a>
+					<a href="../communes/Profil.php" class="optionOrange" >Profil</a>
 					
 						<input type="text" name="recherche" >
 						<img src="../../images/icones/loupe.png" Title="Rechercher"/>
@@ -58,7 +58,7 @@
 			}
 			//sinon un visiteur
 		} else {
-			 ?><a class="optionUtilisateur" href="">S'identifier</a><?php
+			 ?><a class="optionUtilisateur" href="../../index.php">S'identifier</a><?php
 		}
 		?>
 	</div>
