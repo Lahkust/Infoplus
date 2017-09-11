@@ -18,10 +18,8 @@
 </head>
 <body>
 	<div class="backgroundEntete">
-		<img src="../../images/icones/logo.png" class="infoPlusPlus" Title="Info++"/>
+		<img src="../../images/icones/logo.png" class="infoPlusPlus col-3" Title="Info++"/>
 		<?php
-		
-		//$_SESSION['administrateur'] = '1';
 		
 		//Commence par vérifier si il a une variable administrateur
 		if (isset($_SESSION['administrateur'])) {
@@ -29,17 +27,19 @@
 			//si c'est un client
 			if ($_SESSION['administrateur'] == 0) {
 				?>
-				<div class="optionEntete">
-					<a href="../communes/Erreur404.php" class="optionEnteteText">Mon panier (1)</a>
-					<a href="../communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
-				</div>
-				<div class="optionEnteteClient">
-					<a href="" class="optionRouge" >Catalogue</a>
-					<a href="../communes/Profil.php" class="optionOrange" >Profil</a>
-					
+				<div class="row 3">
+					<div class="optionEntete col-6">
+						<a href="../communes/Erreur404.php" class="optionEnteteText">Mon panier (1)</a>
+						<a href="../communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
+					</div>
+					<div class="optionEnteteClient col-6">
+						<a href="" class="optionRouge" >Catalogue</a>
+						<a href="../communes/Profil.php" class="optionOrange" >Profil</a>
+						
 						<input type="text" name="recherche" >
 						<img src="../../images/icones/loupe.png" Title="Rechercher"/>
-					
+						
+					</div>
 				</div>
 				<?php
 				//si c'est un admin
@@ -57,8 +57,9 @@
 				<?php
 			}
 			//sinon un visiteur
-		} else {
-			 ?><a class="optionUtilisateur" href="../../index.php">S'identifier</a><?php
+		} else { ?>
+			<div class="col-7"></div>
+			<a class="col-2" href="../../index.php">S'identifier</a><?php
 		}
 		?>
 	</div>
