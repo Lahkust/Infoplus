@@ -87,12 +87,12 @@
 					print_r("</div"); 	//article row
 						
 						
+					print_r("<div class='row'>");
 						//Code pour Services
 						include_once '../../objects/Promotion.php';
 						if (isset($_SESSION['administrateur'])) {
 							if($_SESSION['administrateur'] == 1) {
 								
-								print_r("<div class='row'>");
 								
 									print_r("<div class='col-3'>");
 										print_r("<div class='service_duration'> Promotions : </div>");
@@ -108,20 +108,20 @@
 											$promos[$row2["pk_promotion_service"]]->insertImg();
 										}
 										
-										print_r("<div class='btn_add'><a href='http://www.perdu.com'><img src='../../images/icones/plus.png' class='btn_add imgButton'/></a></div>");
+										print_r("<a href='http://www.perdu.com'><img src='../../images/icones/plus.png' class='btn_add imgButton'/></a>");
 				
 									print_r("</div>"); //col-8
 									
 									
 									print_r("<div class='col-1'>");
-										print_r("<div class='btn_sociaux'><a href='http://www.perdu.com'><img src='../../images/icones/medias sociaux.jpeg' class='btn_sociaux imgButton'/></a></div>");
+										print_r("<a href='http://www.perdu.com'><img src='../../images/icones/medias sociaux.jpeg' class='btn_sociaux imgButton'/></a>");
 									print_r("</div>");
 									
-								print_r("</div>"); //row
 							}
 							
 							
 						}
+					print_r("</div>"); //row
 						//Fin code pour services
 						
 					

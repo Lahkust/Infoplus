@@ -34,15 +34,15 @@
 				
 			  if($this->isPast())
 			  {
-				print_r($s."'promo_past' alt='promo passée' />");
+				print_r($s."'promo_past' alt='[promo passée]' />");
 			  }
 			  else if($this->isPresent())
 			  {
-				print_r($s."'promo_current' alt='promo actuelle/>");
+				print_r($s."'promo_current' alt='[promo actuelle]/>");
 			  }
 			  else
 			  {
-				print_r($s."'promo_future' alt='promo future/>");
+				print_r($s."'promo_future' alt='[promo future]/>");
 			  }
 			}
           }

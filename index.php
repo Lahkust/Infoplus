@@ -92,24 +92,24 @@
 				<div class="row">
 					<div class="col-4"></div>
 					<div class="col-4">
-						<a href="http://www.perdu.com">Mot de passe oublié<a>
+						<a href="http://www.perdu.com">Mot de passe oublié</a>
 					</div>
 					<div class="col-4"></div>
 				</div>
 				
 				<!-- Connexion -->
 				<div class="row">
-					<div class="col-2"></div>
-					<div class="col-4">
+					<div class="col-5"></div>
+					<div class="col-1">
 						<input type="image" src="images/icones/boutonConnexion.png" class="imgButton" alt="Connexion" />
 					</div>
 					<!-- S'inscrire -->
-					<div class="col-4">
+					<div class="col-1">
 						<a href="pages/clients/Inscription.php">
 							<img src="images/icones/boutonInscription.png" class="imgButton" alt="Inscription"/>
 						</a>
 					</div>
-					<div class="col-2"></div>
+					<div class="col-5"></div>
 				</div>
 				
 				<!-- Connexion avec Facebook -->
