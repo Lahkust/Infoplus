@@ -94,20 +94,31 @@ input, select {
 .borderForm {
 	border-style: solid;
 	color:#FF9F07;
-	padding:2%;
 	margin:2%;
+	display: inline-block; 
+	padding: 2%; 
+	width: auto;
+	text-align: left;
+}
+
+.center {
+	text-align:center;
 }
 
 .confirmer {
-	margin-left:20%;
+	margin-left:70%;
 }
 
+
+input[type=text] {
+    width: 49%;
+}
 .rue {
-	width: 3%;
+	width: 8%;
 }
 
 .adresse {
-	width: 6.25%;
+	width: 20%;
 }
 
 /*Autres*/
