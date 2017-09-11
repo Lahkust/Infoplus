@@ -110,6 +110,15 @@ body {
 	width: auto;
 }
 
+.err404 {
+	width:	auto;
+	height:	auto;
+	text-align:	center;
+	margin: 	auto;
+	display: 	block;
+	
+}
+
 /**** 12 colonnes 
 *{box-sizing:border-box;}
 .col-1 {width: 8.33%;}
