@@ -17,7 +17,7 @@
 	
 	<head>
 		<meta charset="utf-8">
-		<title>Connexion</title>
+		<title>Index</title>
 		
 		<link rel="stylesheet" href="styles/style.css">
 		
