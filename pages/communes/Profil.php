@@ -61,7 +61,7 @@
 	<body>
 		<!--Verifie s'il y a un utilisateur de connecte-->
 		<?php if (isset($_SESSION['pk_utilisateur'])) { 
-			echo $_SESSION['pk_utilisateur'];
+			
 			$sql = "select * from utilisateur a join client b on a.pk_utilisateur=b.fk_utilisateur join adresse c on b.fk_adresse=c.pk_adresse 
 				join ville d on c.fk_ville=d.pk_ville where a.pk_utilisateur= " . $_SESSION['pk_utilisateur'] . "";
 			$result = mysqli_query($conn, $sql);
