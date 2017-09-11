@@ -55,7 +55,7 @@
       if($is_in_db) {
          $_SESSION['pk_utilisateur'] = $pk_utilisateur;
 		 $_SESSION['administrateur'] = $is_admin;
-         header("location: pages/clients/Catalogue.php");
+         header("location: pages/communes/Catalogue.php");
       }else {
          echo "<script type='text/javascript'>alert('Courriel ou mot de passe invalide!')</script>";
       }

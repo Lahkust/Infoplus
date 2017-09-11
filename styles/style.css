@@ -1,7 +1,6 @@
 /*Body*/
 body {
 	font-family:"Century Gothic";
-    background-color: lightblue;
 }
 
 /*En-tête*/
@@ -48,6 +47,44 @@ body {
 	width: auto;
 }
 
+.service_entry {
+	border-style: solid;
+	border-color: #FF9F07;
+}
+
+.service_price {
+	color: #09AAC1;
+}
+
+.service_duration {
+	color: #FF9F07;
+}
+
+.promo_past {
+	max-height: 90px;
+	width: auto;
+	filter: grayscale(100%);
+}
+
+.promo_present {
+	max-height: 90px;
+	width: auto;
+}
+
+.promo_future {
+	max-height: 90px;
+	width: auto;
+}
+
+.btn_add {
+	max-height: 50px;
+	width: auto;
+}
+
+.btn_sociaux {
+	max-height: 50px;
+	width: auto;
+}
 
 /**** 12 colonnes 
 *{box-sizing:border-box;}
