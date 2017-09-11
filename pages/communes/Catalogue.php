@@ -31,11 +31,12 @@
 	
 	<body>
 	
+	<div class="container-fluid">
+	
 <?php
 	try {
 		$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
 		foreach($dbh->query('SELECT * from service') as $row) {
-			
 			
 			print_r("<div class='row'>");
 			
@@ -139,6 +140,7 @@
 		die();
 	}
 ?>
+	</div>
 	</body>
 	
 	<footer>
