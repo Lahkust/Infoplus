@@ -89,16 +89,19 @@
 			mysqli_close($conn);
 		}
 		?>
-		<form method="post" action="cible.php" enctype="multipart/form-data">
-			<fieldset>
-				<p class="textNoir">Remplissez ce formulaire pour créer votre profil</p>
-				<p class="textRouge">Tous les champs sont obligatoires</p>
-				
+		<form class="borderForm" method="post" action="cible.php" enctype="multipart/form-data">
+			
+			<div class="row">
+				<div class="textNoir col-12">Remplissez ce formulaire pour créer votre profil</div>
+			</div>
+			<div class="row">
+				<div class="textRouge col-12">Tous les champs sont obligatoires</div>
+			</div>	
 				<input type="text" name="nom" value="<?php echo $nom;?>" required>
 				<input type="text" name="prenom" value="<?php echo $prenom;?>" required><br/>
 				
-				<input type="text" name="nocivic" value="<?php echo $nocivic;?>" required>
-				<input type="text" name="rue" value="<?php echo $rue;?>" required>
+				<input class="rue" type="text" name="nocivic" value="<?php echo $nocivic;?>" required>
+				<input class="adresse" type="text" name="rue" value="<?php echo $rue;?>" required>
 				
 				<select name="ville" required>
 					<option value="<?php echo $pk_ville?>"><?php echo $ville?></option>
@@ -128,9 +131,9 @@
 				
 				<input type="text" name="codepostal" value="<?php echo $codepostal;?>" required>
 				<input type="text" name="notelephone" value="<?php echo $telephone;?>" required>
-				
-				<p class="textNoir">Votre courriel servira à vous identifier lors de votre prochaine visite</p>
-				<p class="textRouge">Le mot de passe doit avoir au moins 1 chiffre, 1 lettre, et 8 caractères minimum</p>
+				<br/>
+				<div class="textNoir"><br/>Votre courriel servira à vous identifier lors de votre prochaine visite</div>
+				<div class="textRouge">Le mot de passe doit avoir au moins 1 chiffre, 1 lettre, et 8 caractères minimum</div>
 				
 				<!-- Courriel -->
 				<input type="email" name="mail" value="<?php echo $courriel;?>" required/>
@@ -144,19 +147,19 @@
 				<?php
 					//verifer si infolettre est checked
 					if ($infolettre == 1) {
-						print_r("<input type='checkbox' name='infolettre' value='infolettre' checked> Souhaitez-vous recevoir les promotions et les nouveautés<br/>");
+						print_r("<div class='textBleu'><input type='checkbox' name='infolettre' value='infolettre' checked> Souhaitez-vous recevoir les promotions et les nouveautés</div>");
 					} else {
-						print_r("<input type='checkbox' name='infolettre' value='infolettre' > Souhaitez-vous recevoir les promotions et les nouveautés<br/>");
+						print_r("<div class='textBleu'><input type='checkbox' name='infolettre' value='infolettre' > Souhaitez-vous recevoir les promotions et les nouveautés</div>");
 					}
 				?>
 
 				<!-- Confirmer -->
 				<a href="#">
-					<img src="../../images/icones/boutonConfirmer.png" class="button"/>
+					<img src="../../images/icones/boutonConfirmer.png" class="imgButton confirmer"/>
 				</a>
 				<br/>
 				
-			</fieldset>
+			
 		</form>
 	</body>
 	

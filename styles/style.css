@@ -46,24 +46,43 @@ body {
 }
 /*Profil*/
 .textNoir {
-	text-size:14px;
+	font-size:14px;
 	color:#000708;
 	font-weight: bold;
 }
 
 .textRouge {
-	text-size:10px;
+	font-size:10px;
 	color:#FF4A07;
 }
 
-.textForm {
-	text-size:12px;
+input, select {
+	font-size:12px;
 	color:#FF9F07;
 }
 
 .textBleu {
-	text-size:12px;
+	font-size:12px;
 	color:#09AAC1;
+}
+
+.borderForm {
+	border-style: solid;
+	color:#FF9F07;
+	padding:2%;
+	margin:2%;
+}
+
+.confirmer {
+	margin-left:20%;
+}
+
+.rue {
+	width: 3%;
+}
+
+.adresse {
+	width: 6.25%;
 }
 
 /*Autres*/

@@ -92,7 +92,7 @@
 				<div class="row">
 					<div class="col-4"></div>
 					<div class="col-4">
-						<a href="http://www.perdu.com">Mot de passe oublié</a>
+						<a href="pages/communes/Erreur404.php">Mot de passe oublié</a>
 					</div>
 					<div class="col-4"></div>
 				</div>
@@ -105,7 +105,7 @@
 					</div>
 					<!-- S'inscrire -->
 					<div class="col-1">
-						<a href="pages/clients/Inscription.php">
+						<a href="pages/communes/Profil.php">
 							<img src="images/icones/boutonInscription.png" class="imgButton" alt="Inscription"/>
 						</a>
 					</div>
@@ -116,7 +116,7 @@
 				<div class="row">
 					<div class="col-4"></div>
 					<div class="col-4">
-						<a href="http://www.perdu.com">
+						<a href="pages/communes/Erreur404.php">
 							<img src="images/icones/facebook.png" class="imgButton"/>
 						</a>
 					</div>
