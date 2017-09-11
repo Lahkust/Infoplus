@@ -48,6 +48,7 @@ body {
 .textNoir {
 	text-size:14px;
 	color:#000708;
+	font-weight: bold;
 }
 
 .textRouge {

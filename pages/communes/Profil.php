@@ -91,10 +91,9 @@
 		?>
 		<form method="post" action="cible.php" enctype="multipart/form-data">
 			<fieldset>
-				<p>
-					Remplissez ce formulaire pour créer votre profil
-					Tous les champs sont obligatoires
-				</p>
+				<p class="textNoir">Remplissez ce formulaire pour créer votre profil</p>
+				<p class="textRouge">Tous les champs sont obligatoires</p>
+				
 				<input type="text" name="nom" value="<?php echo $nom;?>" required>
 				<input type="text" name="prenom" value="<?php echo $prenom;?>" required><br/>
 				
@@ -130,10 +129,9 @@
 				<input type="text" name="codepostal" value="<?php echo $codepostal;?>" required>
 				<input type="text" name="notelephone" value="<?php echo $telephone;?>" required>
 				
-				<p>
-					Votre courriel servira à vous identifier lors de votre prochaine visite
-					Le mot de passe doit avoir au moins 1 chiffre, 1 lettre, et 8 caractères minimum
-				</p>
+				<p class="textNoir">Votre courriel servira à vous identifier lors de votre prochaine visite</p>
+				<p class="textRouge">Le mot de passe doit avoir au moins 1 chiffre, 1 lettre, et 8 caractères minimum</p>
+				
 				<!-- Courriel -->
 				<input type="email" name="mail" value="<?php echo $courriel;?>" required/>
 				<input type="email" name="confirmermail" value="<?php echo $confirmercourriel;?>" required/><br/>
