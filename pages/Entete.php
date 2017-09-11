@@ -17,53 +17,105 @@
 	<link rel="stylesheet" href="../../styles/style.css">
 </head>
 <body>
-	<div class="backgroundEntete">
-		<img src="../../images/icones/logo.png" class="infoPlusPlus" Title="Info++"/>
-		<?php
+
+	<div class="container-fluid backgroundEntete">
+		<div class="row">
+			<div class="col-md-4">
 		
-		//Commence par vérifier si il a une variable administrateur
-		if (isset($_SESSION['administrateur'])) {
-			
-			//si c'est un client
-			if ($_SESSION['administrateur'] == 0) {
-				?>
-				<div class="right col-3">
-					<div class="row">
-						<a href="../communes/Erreur404.php" class="optionEnteteText col-6">Mon panier (1)</a>
-						<a href="../communes/Logout.php" class="optionEnteteText col-6">Se déconnecter</a>
-					</div>
-				</div>
-				<div class="row">
-					<a href="./Catalogue.php" class="optionRouge col-1" >Catalogue</a>
-					<a href="../communes/Profil.php" class="optionOrange col-1" >Profil</a>
-					<div class="col-3">
-						<input type="text" name="recherche" >
-						<img src="../../images/icones/loupe.png" Title="Rechercher"/>
-					<div>
-				</div>
+				<?php
 				
-				<?php
-				//si c'est un admin
-			} else {
+				//Commence par vérifier si il a une variable administrateur
+				if (isset($_SESSION['administrateur'])) {
+					
+					//si c'est un client
+					if ($_SESSION['administrateur'] == 0) {
+						?>				
+						<img src="../../images/icones/logo.png" class="infoPlusPlus" Title="Info++"/>
+						</div>
+						<div class="col-md-8">
+						<div class="row">
+						
+							<div class="col-md-4">
+							</div>
+							<div class="col-md-4">
+								<a href="../communes/Erreur404.php" class="optionEnteteText align-middle">Mon panier (1)</a>
+							</div>
+							<div class="col-md-4">
+								<a href="../communes/Logout.php" class="optionEnteteText align-middle">Se déconnecter</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<a href="./Catalogue.php" class="optionRouge align-middle" >Catalogue</a>
+							</div>
+							<div class="col-md-4">
+								<a href="../communes/Profil.php" class="optionOrange align-middle" >Profil</a>
+							</div>	
+							<div class="col-md-4 recherche">
+								<img src="../../images/icones/loupe.png" Title="Rechercher"/>
+							</div>			
+						</div>								
+						<?php
+						//si c'est un admin
+					} else {
+						?>			
+						<img src="../../images/icones/logo.png" class="infoPlusPlus" Title="Info++"/>
+						</div>
+						<div class="col-md-8">
+						<div class="row">
+						
+							<div class="col-md-4">
+							</div>
+							<div class="col-md-4">
+							</div>
+							<div class="col-md-4">
+								<a href="../communes/Logout.php" class="optionEnteteText align-middle">Se déconnecter</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+								<a href="./Catalogue.php" class="optionRouge align-middle" >Service</a>
+							</div>
+							<div class="col-md-4">
+								<a href="../communes/Erreur404.php" class="optionOrange align-middle" >Facture</a>
+							</div>			
+							<div class="col-md-4 recherche">
+								<img src="../../images/icones/loupe.png" Title="Rechercher"/>
+							</div>			
+						</div>							
+						<?php
+					}
+					//sinon un visiteur
+				} else { ?>
+						<img src="images/icones/logo.png" class="infoPlusPlus" Title="Info++"/>
+						</div>
+						<div class="col-md-8">
+						<div class="row">
+										
+							<div class="col-md-4">
+							</div>
+							<div class="col-md-4">
+							</div>
+							<div class="col-md-4">
+								<a class="right optionEnteteText align-middle" href="../../index.php">S'identifier</a>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-4">
+							</div>
+							<div class="col-md-4">
+							</div>		
+
+							<div class="col-md-4 recherche">
+								<img src="images/icones/loupe.png" Title="Rechercher"/>
+							</div>			
+						</div>							
+					<?php
+				}
 				?>
-				<a  class="optionEnteteText right col-1" href="../communes/Logout.php" class="optionEnteteText">Se déconnecter</a>
-					
-				<div class="row">
-					<a href="./Catalogue.php" class="optionRouge col-1" >Service</a>
-					<a href="../communes/Erreur404.php" class="optionOrange col-1" >Facture</a>
-					<div class="col-2">
-						<input type="text" name="recherche" >
-						<img src="../../images/icones/loupe.png" Title="Rechercher"/>
-					</div>
-				</div>
-					
-				<?php
-			}
-			//sinon un visiteur
-		} else { ?>
-			<a class="right col-1 optionEnteteText" href="../../index.php">S'identifier</a><?php
-		}
-		?>
+				
+				
+		</div>
 	</div>
 </body>
 </html>

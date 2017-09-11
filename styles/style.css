@@ -1,3 +1,7 @@
+img {
+  height:auto;
+  width: auto;
+}
 /*Body*/
 body {
 	font-family:"Century Gothic";
@@ -25,7 +29,8 @@ body {
  
 .optionEnteteText {
 	color:#FFFAFB;
-	font-size:10px;
+	font-size: 16px; 
+    font-size: 2vw;
 	text-decoration: underline;
 }
 
@@ -38,12 +43,32 @@ body {
 .optionRouge {
 	color:#FF4A07;
 	text-decoration: none;
+	
+	font-size: 16px; 
+    font-size: 2vw;
 }
 
 .optionOrange {
 	color:#FF9F07;
 	text-decoration: none;
+	
+	font-size: 16px; 
+    font-size: 2vw;
 }
+
+.recherche {
+	background-color: white;
+	border-color: black;
+	border-width: 1px;
+	border-style: solid;
+}
+.recherche img {
+	vertical-align: middle;
+	float: right;
+	clear: right;
+	height: 3vw;
+}
+
 /*Profil*/
 .textNoir {
 	font-size:14px;
