@@ -25,11 +25,11 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	</head>
 	
+	<body>
+	
 	<header>
 		<?php include_once '../Entete.php' ?>
 	</header>
-	
-	<body>
 	
 	<div class="container-fluid">
 	
@@ -46,7 +46,7 @@
 					print_r("<div class='row'>");				//article row
 					
 						print_r("<div class='col-3'>");
-							print_r("<img src='../../images/services/" . $row["image"]. ".png' class='img_service'/><br/>");
+							print_r("<img src='../../images/services/" . $row["image"]. ".png' class='img_service' title='service' alt='service'/><br/>");
 						print_r("</div>");
 						
 						print_r("<div class='col-9'>");
@@ -77,7 +77,7 @@
 								print_r("<div class='col-2'>");
 									if (isset($_SESSION['administrateur'])) {
 										if($_SESSION['administrateur'] == 0) {
-												print_r("<div class='btn_add'><a href='http://www.perdu.com'><img src='../../images/icones/panier.png' class='btn_add imgButton'/></a></div>");
+												print_r("<div class='btn_add'><a href='http://www.perdu.com'><img src='../../images/icones/panier.png' class='btn_add imgButton' title='perdu' alt='perdu'/></a></div>");
 										}
 									}
 								print_r("</div>");
@@ -85,7 +85,7 @@
 							print_r("</div>"); //row
 						
 						print_r("</div>"); //col-9
-					print_r("</div"); 	//article row
+					print_r("</div>"); 	//article row
 						
 						
 					print_r("<div class='row'>");
@@ -109,13 +109,13 @@
 											$promos[$row2["pk_promotion_service"]]->insertImg();
 										}
 										
-										print_r("<a href='http://www.perdu.com'><img src='../../images/icones/plus.png' class='btn_add imgButton'/></a>");
+										print_r("<a href='http://www.perdu.com'><img src='../../images/icones/plus.png' class='btn_add imgButton' title='perdu' alt='perdu'/></a>");
 				
 									print_r("</div>"); //col-8
 									
 									
 									print_r("<div class='col-1'>");
-										print_r("<a href='http://www.perdu.com'><img src='../../images/icones/medias sociaux.jpeg' class='btn_sociaux imgButton'/></a>");
+										print_r("<a href='http://www.perdu.com'><img src='../../images/icones/medias_sociaux.jpeg' class='btn_sociaux imgButton' title='perdu' alt='perdu'/></a>");
 									print_r("</div>");
 									
 							}
@@ -127,7 +127,7 @@
 						
 					
 						
-				print_r("</div");		//article col-10
+				print_r("</div>");		//article col-10
 				
 				print_r("<div class='col-1'></div>"); //blanc à droite
 				
@@ -141,9 +141,9 @@
 	}
 ?>
 	</div>
-	</body>
 	
 	<footer>
 	</footer>
+	</body>
 	
 </html>

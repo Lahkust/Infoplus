@@ -27,9 +27,10 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	</head>
 	
-	<header>
-		<?php include_once 'pages/Entete.php' ?>
-	</header>
+	<body>
+		<header>
+			<?php include_once 'pages/Entete.php' ?>
+		</header>
 	
 <?php
    define('DB_SERVER', 'localhost');
@@ -61,8 +62,6 @@
       }
    }
 ?>
-	
-	<body>
 		<main>
 			<form method="post"  action = "" enctype="multipart/form-data">
 				<!-- Intitulé -->
@@ -117,16 +116,15 @@
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
 						<a href="pages/communes/Erreur404.php">
-							<img src="images/icones/facebook.png" class="imgButton"/>
+							<img src="images/icones/facebook.png" class="imgButton" title="Facebook" alt="Facebook"/>
 						</a>
 					</div>
 					<div class="col-md-4"></div>
 				</div>
 			</form>
 		</main>
+	
+		<footer>
+		</footer>
 	</body>
-	
-	<footer>
-	</footer>
-	
 </html>

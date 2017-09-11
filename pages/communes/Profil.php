@@ -29,7 +29,6 @@
 	$nocivic = "No civique";
 	$rue = "Rue";
 	$ville = "Ville";
-	$pk_ville = "";
 	$codepostal = "Code postal";
 	$telephone = "Numéro de téléphone";
 	$courriel = "Courriel";
@@ -53,12 +52,11 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	
 	</head>
-	
-	<header>
-		<?php include_once '../Entete.php' ?>
-	</header>
-	
 	<body>
+		<header>
+			<?php include_once '../Entete.php' ?>
+		</header>
+	
 		<!--Verifie s'il y a un utilisateur de connecte-->
 		<?php if (isset($_SESSION['pk_utilisateur'])) { 
 			
@@ -105,8 +103,8 @@
 					<input class="adresse" type="text" name="rue" value="<?php echo $rue;?>" required>
 					
 					<select name="ville" required>
-						<option value="<?php echo $pk_ville?>"><?php echo $ville?></option>
-						<?php					
+						<option value="" disabled selected>Ville</option>
+						<?php
 							// Create connection
 							$conn = mysqli_connect($servername, $username, $password, $dbname);
 							// Check connection
@@ -120,7 +118,11 @@
 							if (mysqli_num_rows($result) > 0) {
 								// output data of each row
 								while($row = mysqli_fetch_assoc($result)) {
-									print_r("<option value='". $row["pk_ville"] . "'>" . $row["ville"] . " </option>");
+									if($row['ville'] == $ville) {
+										print_r("<option value='". $row["ville"] . "' Selected>" . $row["ville"] . " </option>");
+									} else {
+										print_r("<option value='". $row["ville"] . "'>" . $row["ville"] . " </option>");
+									}
 								}
 							} else {
 								echo "0 results";
@@ -156,16 +158,15 @@
 
 					<!-- Confirmer -->
 					<a href="#">
-						<img src="../../images/icones/boutonConfirmer.png" class="imgButton confirmer"/>
+						<img src="../../images/icones/boutonConfirmer.png" class="imgButton confirmer" title="Confirmer" alt="Confirmer"/>
 					</a>
 					<br/>
 					
 				
 			</form>
 		</div>
+	
+		<footer>
+		</footer>
 	</body>
-	
-	<footer>
-	</footer>
-	
 </html>
