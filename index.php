@@ -48,11 +48,12 @@
 		{
 			$is_in_db = true;
 			$is_admin = $row["administrateur"];
+			$pk_utilisateur = $row["administrateur"];
 		}
 	  }
 		
       if($is_in_db) {
-         $_SESSION['mail'] = $mymail;
+         $_SESSION['pk_utilisateur'] = $pk_utilisateur;
 		 $_SESSION['administrateur'] = $is_admin;
          header("location: pages/clients/Catalogue.php");
       }else {
