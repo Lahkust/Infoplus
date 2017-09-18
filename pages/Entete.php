@@ -71,10 +71,10 @@
 					</div>
 					<div class="row">
 						<div class="col-md-4">
-							<a href="./Catalogue.php" class="optionRouge align-middle" >Service</a>
+							<a href="../communes/Catalogue.php" class="optionRouge align-middle" >Service</a>
 						</div>
 						<div class="col-md-4">
-							<a href="../communes/Erreur404.php" class="optionOrange align-middle" >Facture</a>
+							<a href="../administrateurs/Facture.php" class="optionOrange align-middle" >Facture</a>
 						</div>			
 						<div class="col-md-4 recherche">
 							<img src="../../images/icones/loupe.png" Title="Rechercher" alt="Rechercher"/>
