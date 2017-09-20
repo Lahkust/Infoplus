@@ -25,16 +25,15 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	</head>
 	
-	<header>
-		<?php include_once '../Entete.php' ?>
-	</header>
-	
 	<body>
-
+		<header>
+			<?php include_once '../Entete.php' ?>
+		</header>
+	
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12 err404">
-					<img src="../../images/icones/404.png" class="404"/>
+					<img src="../../images/icones/404.png" class="404" title="error404" alt="error404"/>
 				</div>
 			</div>
 			<div class="row">
@@ -48,9 +47,8 @@
 			</div>
 		</div>
 
+		<footer>
+		</footer>
 	</body>
-	
-	<footer>
-	</footer>
 	
 </html>
