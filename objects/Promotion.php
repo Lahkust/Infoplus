@@ -29,21 +29,13 @@
               return !($this->isPast() || $this->isFuture());
             }
 			
-			public function insertImg() {
-				$s = "<img src='../../images/promotions/".$this->rabais.".png' class=";
-				
-			  if($this->isPast())
-			  {
-				print_r($s."'promo_past' alt='[promo passée]' />");
-			  }
-			  else if($this->isPresent())
-			  {
-				print_r($s."'promo_current' alt='[promo actuelle]/>");
-			  }
-			  else
-			  {
-				print_r($s."'promo_future' alt='[promo future]/>");
-			  }
+			function getPercent () {
+				return $this->rabais * 100;
 			}
+			
+			function getTitre () {
+				return $this->titre;
+			}
+			
           }
         ?>

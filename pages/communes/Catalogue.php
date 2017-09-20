@@ -5,7 +5,7 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-21 */
 /* Date de mise en ligne ........ : 2017-08-21 */
-/* Date de mise à jour .......... : 2017-09-10 */
+/* Date de mise à jour .......... : 2017-09-17 */
 /*******************************************************************************************************/
 /* Catalogue */
 /*******************************************************************************************************/
@@ -31,108 +31,200 @@
 	
 	<body>
 	
-	<div class="container-fluid">
-	
 <?php
 	try {
 		$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
-		foreach($dbh->query('SELECT * from service') as $row) {
-			
-			print_r("<div class='row'>");
-			
-				print_r("<div class='col-1'></div>"); //blanc à gauche
-				
-				print_r("<div class='service_entry col-10'>"); 	//article col-10
-					print_r("<div class='row'>");				//article row
+		
+			//Code pour le bouton d'ajout
+			include_once '../../objects/Promotion.php';
+			if (isset($_SESSION['administrateur'])) {
+				if($_SESSION['administrateur'] == 1) {
+					?>
 					
-						print_r("<div class='col-3'>");
-							print_r("<img src='../../images/services/" . $row["image"]. ".png' class='img_service'/><br/>");
-						print_r("</div>");
-						
-						print_r("<div class='col-9'>");
-						
-							print_r("<div class='row'>");
-								print_r("<div class='col-6'>");
-									print_r("<div class='service_title'>" . $row["service_titre"]. "</div><br/>");
-								print_r("</div>");
-								print_r("<div class='col-6'></div>");
-							print_r("</div>");
-							
-							print_r("<div class='row'>");
-								print_r("<div class='col-12'>");
-									print_r("<div class='service_description'>" . $row["service_description"]. "</div><br/>");
-								print_r("</div>");
-							print_r("</div>");
-							
-							print_r("<div class='row'>");
-							
-								print_r("<div class='col-6'>");
-									print_r("<div class='service_price'>Tarif : " . $row["tarif"]. "$</div><br/>");
-								print_r("</div>");
-								
-								print_r("<div class='col-4'>");
-									print_r("<div class='service_duration'>Durée : " . $row["duree"]. "h</div><br/>");
-								print_r("</div>");
-								
-								print_r("<div class='col-2'>");
-									if (isset($_SESSION['administrateur'])) {
-										if($_SESSION['administrateur'] == 0) {
-												print_r("<div class='btn_add'><a href='http://www.perdu.com'><img src='../../images/icones/panier.png' class='btn_add imgButton'/></a></div>");
-										}
-									}
-								print_r("</div>");
-								
-							print_r("</div>"); //row
-						
-						print_r("</div>"); //col-9
-					print_r("</div"); 	//article row
-						
-						
-					print_r("<div class='row'>");
-						//Code pour Services
+					<div class='row'>
+						<div class='col-9'></div>
+						<div class='col-3 service_add'>
+							<a href='#'>
+								Ajouter un service
+							</a>
+						</div>
+					</div>
+					
+					<?php
+				}
+			}
+			//Fin code pour le bouton d'ajout
+		
+		foreach($dbh->query('SELECT * from service') as $row) {
+		?>
+			<div class='row'>
+			
+				<div class='col-1'></div>
+				
+				<div class='service_entry col-10'>
+				<?php
+						//Code pour le bouton d'admin
 						include_once '../../objects/Promotion.php';
 						if (isset($_SESSION['administrateur'])) {
 							if($_SESSION['administrateur'] == 1) {
-								
-								
-									print_r("<div class='col-3'>");
-										print_r("<div class='service_duration'> Promotions : </div>");
-									print_r("</div>");
-									
-									print_r("<div class='col-8'>");
-									
-										$promos;
-										foreach($dbh->query('SELECT * FROM promotion JOIN ta_promotion_service ON promotion.pk_promotion = ta_promotion_service.fk_promotion AND ta_promotion_service.fk_service = '.$row["pk_service"]) as $row2) {
-						
-											$promos[$row2["pk_promotion_service"]] = new Promotion($row2);
-							
-											$promos[$row2["pk_promotion_service"]]->insertImg();
-										}
-										
-										print_r("<a href='http://www.perdu.com'><img src='../../images/icones/plus.png' class='btn_add imgButton'/></a>");
-				
-									print_r("</div>"); //col-8
-									
-									
-									print_r("<div class='col-1'>");
-										print_r("<a href='http://www.perdu.com'><img src='../../images/icones/medias sociaux.jpeg' class='btn_sociaux imgButton'/></a>");
-									print_r("</div>");
-									
+							?>	
+								<div class='row'>
+									<div class='col-11'></div>
+									<div class='col-1'>
+										<div class='btn-group'>
+											<button data-toggle='dropdown' class='btn btn-default dropdown-toggle'>
+												<span class='caret'></span>
+											</button>
+											<ul class='dropdown-menu'>
+												<li>
+													<a href='#'>
+														Modifier
+													</a>
+												</li>
+												<li>
+													<a href='#'>
+														Désactiver
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<?php
 							}
-							
-							
 						}
-					print_r("</div>"); //row
-						//Fin code pour services
-						
+						//Fin code pour le bouton d'admin
+						?>
+					<!-- articles -->
+					<div class='row'>
 					
+						<div class='col-3'>
+							<?php print_r("<img src='../../images/services/" . $row["image"]. ".png' class='img_service'/><br/>"); ?>
+						</div>
 						
-				print_r("</div");		//article col-10
-				
-				print_r("<div class='col-1'></div>"); //blanc à droite
-				
-			print_r("</div>"); //row principal
+						<div class='col-9'>
+						
+							<div class='row'>
+								<div class='col-6'>
+									<?php print_r("<div class='service_title'>" . $row["service_titre"]. "</div><br/>"); ?>
+								</div>
+								<div class='col-6'></div>
+							</div>
+							
+							<div class='row'>
+								<div class='col-12'>
+									<?php print_r("<div class='service_description'>" . $row["service_description"]. "</div><br/>"); ?>
+								</div>
+							</div>
+							
+							<div class='row'>
+								<div class='col-6'>
+									<?php print_r("<div class='service_price'>Tarif : " . $row["tarif"]. "$</div><br/>"); ?>
+								</div>
+								
+								<div class='col-4'>
+									<?php print_r("<div class='service_duration'>Durée : " . $row["duree"]. "h</div><br/>"); ?>
+								</div>
+								
+								<div class='col-2'>
+								<?php
+									if (isset($_SESSION['administrateur'])) {
+										if($_SESSION['administrateur'] == 0) {
+											?>
+												<div class='btn_add'>
+													<a href='http://www.perdu.com'>
+														<img src='../../images/icones/panier.png' class='btn_add imgButton'/>
+													</a>
+												</div>
+											<?php
+										}
+									}
+									?>
+								</div>
+							</div>
+						</div>
+					</div>
+						
+					<div class='row'>
+					<?php
+						//Code pour Services
+						
+						include_once '../../objects/Promotion.php';
+						if (isset($_SESSION['administrateur'])) {
+							if($_SESSION['administrateur'] == 1) {
+								?>
+								
+									<div class='col-3'>
+										<div class='service_duration'> 
+											Promotions : 
+										</div>
+									</div>
+									
+									<div class='col-8'>
+										<ul class="nav nav-pills nav-justified">
+											<?php
+												$promos;
+												foreach($dbh->query('SELECT * FROM promotion JOIN ta_promotion_service ON promotion.pk_promotion = ta_promotion_service.fk_promotion AND ta_promotion_service.fk_service = '.$row["pk_service"]) as $row2) {
+							
+													$promos[$row2["pk_promotion_service"]] = new Promotion($row2);
+													?>
+													
+													<li class="nav-item">
+														<a class="nav-link"  href="#">
+															
+															<div class='row'>
+																<div class='col-md-12'>
+																	<?php print_r($promos[$row2["pk_promotion_service"]]->getPercent() . "%"); ?>
+																</div>
+															</div>
+															  
+															<div class='row'>
+																<div class='col-md-12'>
+																	<?php print_r($promos[$row2["pk_promotion_service"]]->getTitre()); ?>
+																</div>
+															</div>
+															
+														</a>
+													</li>
+													
+													<?php
+												}
+											?>
+											<!-- Bouton d'ajout d'une promotion -->
+											<li class="nav-item">
+												<a class="nav-link"  href='http://www.perdu.com'>
+													<div class='row'>
+														<div class='col-md-12'>
+															<!--img src='../../images/icones/plus.png' class='btn_add imgButton'/-->
+															+
+														</div>
+													</div>
+												</a>
+											</li>
+										</ul>
+									</div>
+									
+									<div class='col-1'>
+										<a href='http://www.perdu.com'>
+											<img src='../../images/icones/medias sociaux.jpeg' class='btn_sociaux imgButton'/>
+										</a>
+									</div>
+									<?php
+							}
+						}
+						?>
+						</div>
+						<!-- Fin code pour services -->
+						
+				</div>
+				<div class='col-1'></div>
+			</div>
 			
+			<div class='row'>
+				<div class='col-12'></div>
+			</div>
+			
+			<?php
 		}
 		$dbh = null;
 	} catch (PDOException $e) {
