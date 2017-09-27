@@ -19,6 +19,8 @@
 		<meta charset="utf-8">
 		<title>Connexion</title>
 		<link rel="stylesheet" href="../../styles/style.css"/>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="../../scripts/GestionPromotions.js"></script>
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
@@ -31,82 +33,80 @@
 	</header>
 	
 	<body>
-	
-<?php
-	try {
-		$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
-		
-			//Code pour le bouton d'ajout
-			include_once '../../objects/Promotion.php';
-			if (isset($_SESSION['administrateur'])) {
-				if($_SESSION['administrateur'] == 1) {
-					?>
-					
-					<div class='row'>
-						<div class='col-9'></div>
-						<div class='col-3 service_add'>
-							<a href='#' onclick="addPromo()">
-								Ajouter une promotion
-							</a>
+	<div class="container-fluid">		
+		<div class="row" id="container">
+			<div class="col-md-1"></div>
+			<div class="col-md-10" >
+	<?php
+		try {
+			$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
+		?>	
+						<div class='row'>
+							<div class='col-9'></div>
+							<div class='col-3 service_add'>
+								<a href='#' onclick="addPromo()">
+									Ajouter une promotion
+								</a>
+							</div>
+						</div>
+			<?php
+			foreach($dbh->query('SELECT * from promotion') as $row) {
+			?>
+
+			
+				<div class="row service_entry">
+					<div class="col-md-6">
+						<!-- Nom rabais -->
+						<?php echo $row["promotion_titre"] ?>
+					</div>
+					<div class="col-md-5">
+						<!-- Pourcentage rabais -->
+						<?php echo $row["rabais"]*100 ?> %
+					</div>
+					<div class="col-md-1">
+						<div class="btn-group">
+							<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="#">Appliquer à tous les services</a>
+								</li>
+								<li>
+									<a href="#">Modifier</a>
+								</li>
+								<li>
+									<a href="#">Supprimer</a>
+								</li>
+							</ul>
 						</div>
 					</div>
-					
-					<?php
-				}
+				</div>
+
+			
+			
+			
+				<?php
 			}
-			//Fin code pour le bouton d'ajout
-		
-		foreach($dbh->query('SELECT * from promotion') as $row) {
-		?>
-		
-		
-			<div class="row service_entry">
-				<div class="col-md-6">
-					<!-- Nom rabais -->
-					<?php echo $row["promotion_titre"] ?>
-				</div>
-				<div class="col-md-5">
-					<!-- Pourcentage rabais -->
-					<?php echo $row["rabais"]*100 ?> %
-				</div>
-				<div class="col-md-1">
-					<div class="btn-group">
-						<button data-toggle="dropdown" class="btn btn-default dropdown-toggle">
-							<span class="caret"></span>
-						</button>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="#">Appliquer à tous les services</a>
-							</li>
-							<li>
-								<a href="#">Modifier</a>
-							</li>
-							<li>
-								<a href="#">Supprimer</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		
-					<!-- promos -->
-					<div class='row'>
-					</div>
-					<div class='col-1'></div>
-				</div>
-				<div class='row'>
-					<div class='col-12'></div>
-				</div>
-			</div>		
-			<?php
+			$dbh = null;
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
 		}
-		$dbh = null;
-	} catch (PDOException $e) {
-		print "Error!: " . $e->getMessage() . "<br/>";
-		die();
-	}
-?>
-	
+	?>
+						<div class='row' id="btnConfirm">
+							<div class='col-9'></div>
+							<div class='col-3 service_add'>
+								<a href='#' onclick="updateDB()">
+									<button type="button" class="btn btn-warning">Confirmer</button>
+								</a>
+							</div>
+						</div>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+
+	</div>
 	</body>
 	
 	<footer>
