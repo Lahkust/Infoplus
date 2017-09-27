@@ -5,7 +5,7 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-21 */
 /* Date de mise en ligne ........ : 2017-08-21 */
-/* Date de mise à jour .......... : 2017-09-17 */
+/* Date de mise à jour .......... : 2017-09-27 */
 /*******************************************************************************************************/
 /* Catalogue */
 /*******************************************************************************************************/
@@ -169,22 +169,14 @@
 													$promos[$row2["pk_promotion_service"]] = new Promotion($row2);
 													?>
 													
-													<li class="nav-item">
-														<a class="nav-link"  href="#">
-															
-															<div class='row'>
-																<div class='col-md-12'>
-																	<?php print_r($promos[$row2["pk_promotion_service"]]->getPercent() . "%"); ?>
-																</div>
-															</div>
-															  
-															<div class='row'>
-																<div class='col-md-12'>
-																	<?php print_r($promos[$row2["pk_promotion_service"]]->getTitre()); ?>
-																</div>
-															</div>
-															
+													<li class="nav-item dropdown">
+														<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+															<?php print_r($promos[$row2["pk_promotion_service"]]->getPercent() . "%"); ?><br/>
+															<?php print_r($promos[$row2["pk_promotion_service"]]->getTitre()); ?>
 														</a>
+														<div class="dropdown-menu">
+															<a class="dropdown-item" href="#">Modifier</a>
+															<a class="dropdown-item" href="#">Supprimer</a>
 													</li>
 													
 													<?php
