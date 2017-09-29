@@ -88,7 +88,7 @@
 		}
 		?>
 		<div class="center">
-			<form class="borderForm" method="post" action="cible.php" enctype="multipart/form-data">
+			<form name="profil" class="borderForm" method="post">
 				
 				<div class="row">
 					<div class="textNoir col-12">Remplissez ce formulaire pour créer votre profil</div>
@@ -96,11 +96,11 @@
 				<div class="row">
 					<div class="textRouge col-12">Tous les champs sont obligatoires</div>
 				</div>	
-					<input type="text" name="nom" value="<?php echo $nom;?>" required>
-					<input type="text" name="prenom" value="<?php echo $prenom;?>" required><br/>
+					<input type="text" name="nom" placeholder="Nom" value="<?php echo $nom;?>" required>
+					<input type="text" name="prenom" placeholder="Prénom" value="<?php echo $prenom;?>" required><br/>
 					
-					<input class="rue" type="text" name="nocivic" value="<?php echo $nocivic;?>" required>
-					<input class="adresse" type="text" name="rue" value="<?php echo $rue;?>" required>
+					<input class="rue" type="text" name="nocivic" placeholder="No civique" value="<?php echo $nocivic;?>" required>
+					<input class="adresse" type="text" name="rue" placeholder="Rue" value="<?php echo $rue;?>" required>
 					
 					<select name="ville" required>
 						<option value="" disabled selected>Ville</option>
@@ -132,19 +132,19 @@
 						?>
 					</select><br/>
 					
-					<input type="text" name="codepostal" value="<?php echo $codepostal;?>" required>
-					<input type="text" name="notelephone" value="<?php echo $telephone;?>" required>
+					<input type="text" name="codepostal" id="codepostal" placeholder="Code postal" value="<?php echo $codepostal;?>" onblur="Valider('codepostal')" required>
+					<input type="text" name="telephone" id="telephone" placeholder="Téléphone" value="<?php echo $telephone;?>" onblur="Valider('telephone')" required>
 					<br/>
 					<div class="textNoir"><br/>Votre courriel servira à vous identifier lors de votre prochaine visite</div>
 					<div class="textRouge">Le mot de passe doit avoir au moins 1 chiffre, 1 lettre, et 8 caractères minimum</div>
 					
 					<!-- Courriel -->
-					<input type="email" name="mail" value="<?php echo $courriel;?>" required/>
-					<input type="email" name="confirmermail" value="<?php echo $confirmercourriel;?>" required/><br/>
+					<input type="email" name="courriel1" id="courriel1" placeholder="Courriel" value="<?php echo $courriel;?>" onblur="Valider('courriel1')" required/>
+					<input type="email" name="courriel2" id="courriel2" placeholder="Confirmer Courriel" value="<?php echo $confirmercourriel;?>" onblur="Valider('courriel2')" required/><br/>
 					
 					<!-- Mot de passe -->
-					<input type="password" name="password" value="<?php echo $motdepasse;?>" required/>
-					<input type="password" name="confirmerpassword" value="<?php echo $motdepasse;?>" required/>
+					<input type="password" name="password1" placeholder="Mot de passe" value="<?php echo $motdepasse;?>" required/>
+					<input type="password" name="password2" placeholder="Confirmer mot de passe" value="<?php echo $motdepasse;?>" onblur="verifierPassword()" required/>
 					<br/>
 					
 					<?php
@@ -157,14 +157,104 @@
 					?>
 
 					<!-- Confirmer -->
-					<a href="#">
+					<a href="#" onclick="return verifyPassEmail();">
 						<img src="../../images/icones/boutonConfirmer.png" class="imgButton confirmer" title="Confirmer" alt="Confirmer"/>
 					</a>
 					<br/>
 					
+					<?php
+					/*if ($_SERVER["REQUEST_METHOD"] == "POST") {
+						if(isset($_POST['email']) && !empty($_POST['email'])){
+							try{
+								$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
+								if (isset($_SESSION['pk_utilisateur'])) {
+									//profil
+									foreach($dbh->query('SELECT * from utilisateur') as $row) {
+										if(($row["courriel"]==$_POST["courriel1"]))
+										{
+											 echo '<script type="text/javascript">';
+											 echo 'alert("Le courriel est déja utilisé");';
+											 echo '</script>';
+											 //break
+										} 
+									}
+									//update profil
+									
+									
+								} else {
+									//inscrire nouveau profil dans la base de données
+									$sql = '';
+									if ($dbh->query($sql) === true) {
+										echo "Utilisateur inscrit";
+									} 
+								}
+								
+								$dbh = null;
+							} catch (PDOException $e) {
+								print "Error!: " . $e->getMessage() . "<br/>";
+								die();
+							}
+							
+						}							
+					}*/
+					?>
 				
 			</form>
 		</div>
+		
+		<script type="text/javascript">
+			//Vérifier user input
+			function Valider(input) {	
+				switch(input) {
+					case "telephone":
+						if(!/^(\(?)([0-9]{0,3})(\)?)(\.|\s|-)([0-9]{3})(\.|\s|-)([0-9]{4})$/.test(document.profil.telephone.value)) {
+							alert('Erreur téléphone : (999) 999-9999 | (999)999-9999 | (999) 999.9999 | (999)999.9999 | 999.999.9999 | 999-999-9999 | 999.9999 | 999-9999');
+							setTimeout(function(){ 
+							document.profil.telephone.focus(); 
+							}, 0001);
+						}
+						break;
+					case "codepostal":
+						if(!/^[a-z][0-9][a-z](\s|-)?[0-9][a-z][0-9]$/i.test(document.profil.codepostal.value)) {
+							alert('Erreur code postal : A9A 9A9 | A9A-9A9 | A9A9A9');
+							setTimeout(function(){ 
+							document.profil.codepostal.focus();
+							}, 0001);
+						}
+						break;
+					case "courriel1":
+						if(!/^([a-z0-9._-]+)@([a-z0-9._-]+)\.([a-z]{2,6})$/i.test(document.profil.courriel1.value)) {
+							alert('Erreur courriel : compte@domaine.ext | compte@255.255.255.0');	
+							setTimeout(function(){ 
+							document.profil.courriel1.focus(); 
+							}, 0001);
+						}
+						break;
+					case "courriel2":
+						if(!/^([a-z0-9._-]+)@([a-z0-9._-]+)\.([a-z]{2,6})$/i.test(document.profil.courriel2.value)) {
+							alert('Erreur courriel : compte@domaine.ext | compte@255.255.255.0');	
+							setTimeout(function(){ 
+							document.profil.courriel2.focus(); 
+							}, 0001);
+						}
+						break;
+				}
+			}
+			
+			//Vérifier les deux email et les deux passsword
+			function verifyPassEmail() {
+				if (document.profil.courriel1.value != document.profil.courriel2.value ) {
+					alert("Courriel différent");
+					return false;
+				} else if (document.profil.password1.value != document.profil.password2.value) {
+					alert("Mot de passe différent");
+					return false;
+				} else {
+					return true;
+				}
+			}
+		
+		</script>
 	
 		<footer>
 		</footer>

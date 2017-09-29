@@ -5,7 +5,7 @@
 /* Auteur ....................... : Christopher Brown */
 /* Date de création ............. : 2017-09-11 */
 /* Date de mise en ligne ........ : 2017-09-11 */
-/* Date de mise à jour .......... : 2017-09-18 */
+/* Date de mise à jour .......... : 2017-09-27*/
 /*******************************************************************************************************/
 /* Facture des clients avec leurs informations */
 /*******************************************************************************************************/
@@ -15,6 +15,7 @@
 <html lang="fr">
 	<?php 
 		session_start();
+		require_once '../../Objects/Connection.php';
 	?>
 	
 	<head>
@@ -35,13 +36,13 @@
 		
 		<!--Verifie s'il y a un utilisateur de connecte-->
 		<?php try {
-			
-			$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
-			$dbh->exec("set names utf8");
-			foreach($dbh->query('select * from client a join facture b on a.pk_client=b.fk_client join ta_facture_service c on b.pk_facture=c.fk_facture 
-					join service d on c.fk_service=d.pk_service ORDER BY b.date_service DESC') as $row) {
-						
-				print_r(" " . $row["prenom"] . " " . $row["nom"]);
+			$i = 0;
+			$dbh = db_connect();		
+			/*$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
+			$dbh->exec("set names utf8");*/
+			foreach($dbh->query('select * from client a join facture b on a.pk_client=b.fk_client join ta_facture_service c 
+				on b.pk_facture=c.pk_facture_service ORDER BY b.date_service DESC') as $row) {
+				$i++;
 				?>
 				<div class="container-fluid">
 					<div class="row">
@@ -52,13 +53,13 @@
 								<div class="col-md-10">
 									<div class="row">
 										<div class="col-md-2">
-											345
+											<?php print_r($row["pk_facture"]); ?>
 										</div>
 										<div class="col-md-5">
-										richard lard
+											<?php print_r(" " . $row["prenom"] . " " . $row["nom"]); ?>
 										</div>
 										<div class="col-md-3">
-										21/03/2016
+											<?php print_r($row["date_service"]); ?>
 										</div>
 										<div class="col-md-2">
 										</div>
@@ -67,38 +68,35 @@
 										<div class="col-md-2">
 										</div>
 										<div class="col-md-5">
-										no facture
+											<?php print_r($row["no_confirmation"]); ?>
 										</div>
 										<div class="col-md-3">
-										180.00$
+											
+											<?php print_r($row["tarif_facture"]); ?>
 										</div>
 										<div class="col-md-2">
-											<div class="panel-group" id="panel-2644">
-												<div class="panel panel-default">
-													<div class="panel-heading">
-														 <a class="panel-title collapsed" data-toggle="collapse" data-parent="#panel-2644" href="#panel-element-590125">Détail</a>
-													</div>
-												</div>
-											</div>
+											 <a id="hide" class="collapsed" data-toggle="collapse" <?php echo 'href="#detail' . $i . '"';?> ><!--onclick="hideDetail()"-->Détail</a>	
 										</div>
 									</div>
 									<!-- requete sql pour avoir le nombre de rows -->
-									<div class="row">
-										<div id="panel-element-590125" class="panel-collapse collapse">
-											<div class="panel-body">
+									
+										<div <?php echo 'id="detail' . $i . '"';?> class="collapse">
+											<div class="row">
 												<div class="col-md-3">
 													</div>
 													<div class="col-md-4">
-														Excel débutant
+														oo
 													</div>
 													<div class="col-md-3">
-														120.00$
+														kk
 													</div>
 													<div class="col-md-2">
+														 <a class="collapsed" data-toggle="collapse"  href="#detail" <!--onclick="hideDetail()"-->>Réduire</a>
+													</div>
 												</div>
 											</div>
 										</div>
-									</div>
+									
 								</div>
 								<div class="col-md-1">
 								</div>
@@ -114,7 +112,17 @@
 		}
 		?>
 		
-	
+		<script>
+		function hideDetail() {
+			var x = document.getElementById('hide');
+			if (x.style.display === 'none') {
+				x.style.display = 'block';
+			} else {
+				x.style.display = 'none';
+			}
+		}
+		</script>
+		
 		<footer>
 		</footer>
 	</body>
