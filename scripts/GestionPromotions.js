@@ -11,13 +11,15 @@
 /*******************************************************************************************************************/
 
 
-function addPromo()
+
+
+function addPromo(ran)
 {
 	var insertLine = "<div class='row service_entry'>";
 			insertLine += "<div class='col-md-6'>";
-				insertLine += "<input type='text' class='form-control' id='usr'>";			insertLine += "</div>";
+				insertLine += "<input type='text' class='form-control' name='titre_"+ran+"' >";			insertLine += "</div>";
 			insertLine += "<div class='col-md-5'>";
-				insertLine += "<input type='text' class='form-control' id='usr'>";
+				insertLine += "<input type='text' class='form-control' name='rabais_"+ran+"'>";
 			insertLine += "</div>";
 			insertLine += "<div class='col-md-1'>";
 			insertLine += "</div>";
@@ -38,8 +40,14 @@ function insertPromo()
 	alert("BANANAS");
 }
 
-function modifyPromo()
+function modifyPromo(ran)
 {
-	alert("BANANAS");
+	var rabaisId = "#rabais_" + ran;
+	var titreId = "#titre_" + ran;
+	
+	
+	$( titreId ).prop('disabled', false);
+	$( rabaisId ).prop('disabled', false);
+	
 }
 
