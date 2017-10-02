@@ -4,7 +4,7 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-27 */
 /* Date de mise en ligne ........ : 2017-08-27 */
-/* Date de mise à jour .......... : 2017-09-27 */
+/* Date de mise à jour .......... : 2017-10-01 */
 /*******************************************************************************************************************/
 /* Code javascript de la page qui permet de lister toutes les promotions, en créer de nouvelles, 				   */
 /* modifier les existantes et les appliquer en masse 															   */
@@ -32,3 +32,14 @@ function updateDB()
 {
 	alert("BANANAS");
 }
+
+function insertPromo()
+{
+	alert("BANANAS");
+}
+
+function modifyPromo()
+{
+	alert("BANANAS");
+}
+

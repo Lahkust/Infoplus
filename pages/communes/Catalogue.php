@@ -5,14 +5,16 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-21 */
 /* Date de mise en ligne ........ : 2017-08-21 */
-/* Date de mise à jour .......... : 2017-09-27 */
+/* Date de mise à jour .......... : 2017-10-01 */
 /*******************************************************************************************************/
 /* Catalogue */
 /*******************************************************************************************************/
 -->
 <!doctype HTML>
 <html lang="fr">
-<?php	 session_start(); ?>
+<?php	 session_start(); 
+		require_once '../../Objects/Connection.php';
+$dbh = db_connect();  ?>
 	
 	<head>
 		<meta charset="utf-8">
@@ -33,7 +35,6 @@
 	
 <?php
 	try {
-		$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
 		
 			//Code pour le bouton d'ajout
 			include_once '../../objects/Promotion.php';
@@ -44,7 +45,7 @@
 					<div class='row'>
 						<div class='col-9'></div>
 						<div class='col-3 service_add'>
-							<a href='#'>
+							<a href='Erreur404.php' target="_blank">
 								Ajouter un service
 							</a>
 						</div>
@@ -175,8 +176,9 @@
 															<?php print_r($promos[$row2["pk_promotion_service"]]->getTitre()); ?>
 														</a>
 														<div class="dropdown-menu">
-															<a class="dropdown-item" href="#">Modifier</a>
-															<a class="dropdown-item" href="#">Supprimer</a>
+															<?php echo '<a class="dropdown-item" href="../administrateurs/Promotions.php?idService='. $row['pk_service'] . '&idPromo='. $row2['fk_promotion'] .'&idPromoService='. $row2['pk_promotion_service'] .'" target="_blank">Modifier</a>'; ?>
+															
+															<?php echo'<a class="dropdown-item" href="#">Supprimer</a>' ?>
 													</li>
 													
 													<?php
@@ -184,7 +186,7 @@
 											?>
 											<!-- Bouton d'ajout d'une promotion -->
 											<li class="nav-item">
-												<a class="nav-link"  href='http://www.perdu.com'>
+												<?php echo' <a class="nav-link"  href="../administrateurs/Promotions.php?idService='. $row['pk_service'] .'" target="_blank">' ?>
 													<div class='row'>
 														<div class='col-md-12'>
 															<!--img src='../../images/icones/plus.png' class='btn_add imgButton'/-->

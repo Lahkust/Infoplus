@@ -5,7 +5,7 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-27 */
 /* Date de mise en ligne ........ : 2017-08-27 */
-/* Date de mise à jour .......... : 2017-09-27 */
+/* Date de mise à jour .......... : 2017-10-01 */
 /*******************************************************************************************************************/
 /* Permet de lister toutes les promotions, en créer de nuvelles, modifier les existantes et les appliquer en masse */
 /*******************************************************************************************************************/
@@ -13,7 +13,9 @@
 
 <!doctype HTML>
 <html lang="fr">
-<?php	 session_start(); ?>
+<?php	 session_start();
+		require_once '../../Objects/Connection.php';
+$dbh = db_connect();  ?>
 	
 	<head>
 		<meta charset="utf-8">
@@ -39,7 +41,7 @@
 			<div class="col-md-10" >
 	<?php
 		try {
-			$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
+			
 		?>	
 						<div class='row'>
 							<div class='col-9'></div>
@@ -73,7 +75,8 @@
 									<a href="#">Appliquer à tous les services</a>
 								</li>
 								<li>
-									<a href="#">Modifier</a>
+								<?php echo '<a href="Promotions.php?idPromo='. $row['pk_promotion'] .'" target="_blank">Modifier</a>'; ?>
+									
 								</li>
 								<li>
 									<a href="#">Supprimer</a>
