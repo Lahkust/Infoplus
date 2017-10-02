@@ -5,7 +5,7 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-21 */
 /* Date de mise en ligne ........ : 2017-08-21 */
-/* Date de mise à jour .......... : 2017-10-01 */
+/* Date de mise à jour .......... : 2017-10-02 */
 /*******************************************************************************************************/
 /* Catalogue */
 /*******************************************************************************************************/
@@ -69,7 +69,7 @@ $dbh = db_connect();  ?>
 					<div class='row'>
 						<div class='col-9'></div>
 						<div class='col-3 service_add'>
-							<a href='Erreur404.php' target="_blank">
+							<a href='../administrateurs/GestionService.php' target="_blank">
 								Ajouter un service
 							</a>
 						</div>
@@ -102,7 +102,7 @@ $dbh = db_connect();  ?>
 											</button>
 											<ul class='dropdown-menu'>
 												<li>
-													<a href='#'>
+													<a href='../administrateurs/GestionService.php?idService=<?php echo $row['pk_service'] ?>' target="_blank">
 														Modifier
 													</a>
 												</li>

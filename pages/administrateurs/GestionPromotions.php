@@ -5,7 +5,7 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-27 */
 /* Date de mise en ligne ........ : 2017-08-27 */
-/* Date de mise à jour .......... : 2017-10-01 */
+/* Date de mise à jour .......... : 2017-10-02 */
 /*******************************************************************************************************************/
 /* Permet de lister toutes les promotions, en créer de nuvelles, modifier les existantes et les appliquer en masse */
 /*******************************************************************************************************************/
@@ -95,19 +95,12 @@ function random_num($size) {
 					// exécuter la requête
 					$stmt->execute(array($titre,$rabais));
 				}
-						
-						
 				$titre = '';
 				$rabais = '';
 			}
-		
 		}
-	
-	
 	}
 	?>
-	
-	
 	
 	<body>
 	<div class="container-fluid">		
@@ -141,9 +134,7 @@ function random_num($size) {
 						
 						$promoName = "titre_" . $ranNum;?>
 						
-						
 						<?php echo '<input type="text" id="titre_' . $ranNum . '" class="form-control" name="' . $promoName . '" value="' . $promoTitre . '"disabled>' ?>
-						
 						
 					</div>
 					<div class="col-md-5">
@@ -156,7 +147,6 @@ function random_num($size) {
 						
 						
 						<?php echo '<input type="text" id="rabais_' . $ranNum . '" class="form-control" name="' . $rabaisName . '" value="' . $promoRabais . '"disabled>' ?>
-						
 						
 					</div>
 					<div class="col-md-1">
@@ -178,7 +168,6 @@ function random_num($size) {
 						</div>
 					</div>
 					
-					
 				</div>
 
 				<?php
@@ -196,7 +185,6 @@ function random_num($size) {
 							</div>
 						</div>
 						
-					
 			</div>
 			<div class="col-md-1"></div>
 		</div>
