@@ -129,6 +129,57 @@ input[type=password]{
 	width: 20%;
 }
 
+/*Facture*/
+
+.nofacture {
+	font-size:16px;
+	color:#FF4A07;
+}
+
+.nom {
+	font-size:16px;
+	color:#000708;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.date {
+	font-size:16px;
+	color:#FF9F07;
+}
+
+.notarif {
+	font-size:16px;
+	color:#09AAC1;
+}
+
+.detail {
+	font-size:14px;
+	color:#000708;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+.produit {
+	font-size:14px;
+	color:#000708;
+}
+
+.promotion {
+	font-size:14px;
+	color:#FF4A07;
+}
+
+.borderFacture {
+	border-style: solid;
+	border-color: #FF9F07;
+	padding:1%;
+	margin-top:1%;
+	margin-right:5%;
+	margin-left:5%;
+}
+
+
 /*Autres*/
 .imgButton {
 	max-height: 30px;

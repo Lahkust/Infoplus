@@ -5,7 +5,7 @@
 /* Auteur ....................... : Christopher Brown */
 /* Date de création ............. : 2017-08-21 */
 /* Date de mise en ligne ........ : 2017-08-21 */
-/* Date de mise à jour .......... : 2017-09-10 */
+/* Date de mise à jour .......... : 2017-10-01 */
 /*******************************************************************************************************/
 /* Entête pour le site. L'entête change s'il y a un utilisateur, administrateur ou personne de connecté. */
 /*******************************************************************************************************/
@@ -46,7 +46,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-4">
-								<a href="./Catalogue.php" class="optionRouge align-middle" >Catalogue</a>
+								<a href="../communes/Catalogue.php" class="optionRouge align-middle" >Catalogue</a>
 							</div>
 							<div class="col-md-4">
 								<a href="../communes/Profil.php" class="optionOrange align-middle" >Profil</a>
@@ -74,10 +74,10 @@
 						</div>
 						<div class="row">
 							<div class="col-md-4">
-								<a href="./Catalogue.php" class="optionRouge align-middle" >Service</a>
+								<a href="../communes/Catalogue.php" class="optionRouge align-middle" >Service</a>
 							</div>
 							<div class="col-md-4">
-								<a href="../communes/Erreur404.php" class="optionOrange align-middle" >Facture</a>
+								<a href="../administrateurs/Facture.php" class="optionOrange align-middle" >Facture</a>
 							</div>			
 							<div class="col-md-4 recherche">
 								<img src="../../images/icones/loupe.png" Title="Rechercher"/>

@@ -5,37 +5,13 @@
 /* Auteur ....................... : Christopher Brown */
 /* Date de création ............. : 2017-08-30 */
 /* Date de mise en ligne ........ : 2017-08-30 */
-/* Date de mise à jour .......... : 2017-09-10 */
+/* Date de mise à jour .......... : 2017-10-01 */
 /*******************************************************************************************************/
 /* Inscription ou modification du profil pour un utilisateur */
 /*******************************************************************************************************/
 -->
 <?php
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "infoplus";
-
-	// Create connection
-	$conn = mysqli_connect($servername, $username, $password, $dbname);
-	// Check connection
-	if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
-	
-	// Valeur de base pour les champs du formulaire
-	$nom = "Nom";
-	$prenom = "Prénom";
-	$nocivic = "No civique";
-	$rue = "Rue";
-	$ville = "Ville";
-	$codepostal = "Code postal";
-	$telephone = "Numéro de téléphone";
-	$courriel = "Courriel";
-	$confirmercourriel = "Confirmer Courriel";
-	$motdepasse = "Password";
-	$infolettre = "1";
-	
+	require_once '../../Objects/Connection.php';
 	session_start();
 ?>
 <!doctype html>
@@ -60,35 +36,38 @@
 		<!--Verifie s'il y a un utilisateur de connecte-->
 		<?php if (isset($_SESSION['pk_utilisateur'])) { 
 			
-			$sql = "select * from utilisateur a join client b on a.pk_utilisateur=b.fk_utilisateur join adresse c on b.fk_adresse=c.pk_adresse 
-				join ville d on c.fk_ville=d.pk_ville where a.pk_utilisateur= " . $_SESSION['pk_utilisateur'] . "";
-			$result = mysqli_query($conn, $sql);
+			try {
+				$utilisateur = $_SESSION['pk_utilisateur'];
+				$dbh = db_connect();
+				$stmt = $dbh->prepare('select * from utilisateur a join client b on a.pk_utilisateur=b.fk_utilisateur join adresse c on b.fk_adresse=c.pk_adresse 
+					join ville d on c.fk_ville=d.pk_ville where a.pk_utilisateur= :pk_utilisateur ');
+				$stmt->execute(['pk_utilisateur' => $utilisateur]);
+				$profil = $stmt->fetch();
 
-			if (mysqli_num_rows($result) > 0) {
-				// rechercher chaque donnees pour le formulaire
-				while($row = mysqli_fetch_assoc($result)) {
-					$nom = $row['nom'];
-					$prenom = $row['prenom'];
-					$nocivic = $row['no_civique'];
-					$rue = $row['rue'];
-					$ville = $row['ville'];
-					$pk_ville = $row['pk_ville'];
-					$codepostal = $row['code_postal'];
-					$telephone = $row['telephone'];
-					$courriel = $row['courriel'];
-					$confirmercourriel = $row['courriel'];
-					$motdepasse = $row['mot_de_passe'];
-					$infolettre = $row['infolettre'];
-				}
-			} else {
-				echo "Erreur or 0 results";
+				if (is_array($profil)) {
+					$nom = $profil['nom'];
+					$prenom = $profil['prenom'];
+					$nocivic = $profil['no_civique'];
+					$rue = $profil['rue'];
+					$ville = $profil['ville'];
+					$pk_ville = $profil['pk_ville'];
+					$codepostal = $profil['code_postal'];
+					$telephone = $profil['telephone'];
+					$courriel = $profil['courriel'];
+					$confirmercourriel = $profil['courriel'];
+					$motdepasse = $profil['mot_de_passe'];
+					$infolettre = $profil['infolettre'];
+				} 
+				
+				$dbh = null;
+			} catch (PDOException $e) {
+				print "Error!: " . $e->getMessage() . "<br/>";
+				die();
 			}
-
-			mysqli_close($conn);
 		}
 		?>
 		<div class="center">
-			<form name="profil" class="borderForm" method="post">
+			<form name="profil" class="borderForm" method="post" action = "" enctype="multipart/form-data">
 				
 				<div class="row">
 					<div class="textNoir col-12">Remplissez ce formulaire pour créer votre profil</div>
@@ -96,97 +75,141 @@
 				<div class="row">
 					<div class="textRouge col-12">Tous les champs sont obligatoires</div>
 				</div>	
-					<input type="text" name="nom" placeholder="Nom" value="<?php echo $nom;?>" required>
-					<input type="text" name="prenom" placeholder="Prénom" value="<?php echo $prenom;?>" required><br/>
+					<input type="text" name="nom" placeholder="Nom" value="" required>
+					<input type="text" name="prenom" placeholder="Prénom" value="" required><br/>
 					
-					<input class="rue" type="text" name="nocivic" placeholder="No civique" value="<?php echo $nocivic;?>" required>
-					<input class="adresse" type="text" name="rue" placeholder="Rue" value="<?php echo $rue;?>" required>
+					<input class="rue" type="text" name="no_civique" placeholder="No civique" value="" required>
+					<input class="adresse" type="text" name="rue" placeholder="Rue" value="" required>
 					
 					<select name="ville" required>
 						<option value="" disabled selected>Ville</option>
 						<?php
-							// Create connection
-							$conn = mysqli_connect($servername, $username, $password, $dbname);
-							// Check connection
-							if (!$conn) {
-								die("Connection failed: " . mysqli_connect_error());
-							}
-							
-							$sql = "SELECT ville FROM ville";
-							$result = mysqli_query($conn, $sql);
-
-							if (mysqli_num_rows($result) > 0) {
-								// output data of each row
-								while($row = mysqli_fetch_assoc($result)) {
+							//Chercher les villes
+							try {
+								$dbh = db_connect();
+								$stmt = $dbh->query('SELECT * FROM ville');
+								
+								foreach($stmt as $row) {
+									//Sélectionner la ville l'utilisateur
 									if($row['ville'] == $ville) {
-										print_r("<option value='". $row["ville"] . "' Selected>" . $row["ville"] . " </option>");
+										echo "<option value='". $row["pk_ville"] . "' Selected>" . $row["ville"] . " </option>";
 									} else {
-										print_r("<option value='". $row["ville"] . "'>" . $row["ville"] . " </option>");
+										echo "<option value='". $row["pk_ville"] . "'>" . $row["ville"] . " </option>";
 									}
 								}
-							} else {
-								echo "0 results";
-							}
-
-							mysqli_close($conn);
+								
+								$dbh = null;
+							} catch (PDOException $e) {
+								print "Error!: " . $e->getMessage() . "<br/>";
+								die();
+							}					
 						?>
 					</select><br/>
 					
-					<input type="text" name="codepostal" id="codepostal" placeholder="Code postal" value="<?php echo $codepostal;?>" onblur="Valider('codepostal')" required>
-					<input type="text" name="telephone" id="telephone" placeholder="Téléphone" value="<?php echo $telephone;?>" onblur="Valider('telephone')" required>
+					<input type="text" name="code_postal" id="code_postal" placeholder="Code postal" value="" onblur="Valider('code_postal')" required>
+					<input type="text" name="telephone" id="telephone" placeholder="Téléphone" value="" onblur="Valider('telephone')" required>
 					<br/>
 					<div class="textNoir"><br/>Votre courriel servira à vous identifier lors de votre prochaine visite</div>
 					<div class="textRouge">Le mot de passe doit avoir au moins 1 chiffre, 1 lettre, et 8 caractères minimum</div>
 					
 					<!-- Courriel -->
-					<input type="email" name="courriel1" id="courriel1" placeholder="Courriel" value="<?php echo $courriel;?>" onblur="Valider('courriel1')" required/>
-					<input type="email" name="courriel2" id="courriel2" placeholder="Confirmer Courriel" value="<?php echo $confirmercourriel;?>" onblur="Valider('courriel2')" required/><br/>
+					<input type="email" name="courriel" id="courriel" placeholder="Courriel" value="" onblur="Valider('courriel')" required/>
+					<input type="email" name="courriel2" id="courriel2" placeholder="Confirmer Courriel" value="" onblur="Valider('courriel2')" required/><br/>
 					
 					<!-- Mot de passe -->
-					<input type="password" name="password1" placeholder="Mot de passe" value="<?php echo $motdepasse;?>" required/>
-					<input type="password" name="password2" placeholder="Confirmer mot de passe" value="<?php echo $motdepasse;?>" onblur="verifierPassword()" required/>
+					<input type="password" name="mot_de_passe" placeholder="Mot de passe" value="" required/>
+					<input type="password" name="mot_de_passe2" placeholder="Confirmer mot de passe" value="" onblur="verifierPassword()" required/>
 					<br/>
 					
 					<?php
 						//verifer si infolettre est checked
 						if ($infolettre == 1) {
-							print_r("<div class='textBleu'><input type='checkbox' name='infolettre' value='infolettre' checked> Souhaitez-vous recevoir les promotions et les nouveautés</div>");
+							print_r("<div class='textBleu'><input type='checkbox' name='infolettre' value='1' checked> Souhaitez-vous recevoir les promotions et les nouveautés</div>");
 						} else {
-							print_r("<div class='textBleu'><input type='checkbox' name='infolettre' value='infolettre' > Souhaitez-vous recevoir les promotions et les nouveautés</div>");
+							print_r("<div class='textBleu'><input type='checkbox' name='infolettre' value='0' > Souhaitez-vous recevoir les promotions et les nouveautés</div>");
 						}
 					?>
 
 					<!-- Confirmer -->
-					<a href="#" onclick="return verifyPassEmail();">
+					<!--<a href="#" onclick="return verifyPassEmail();">
 						<img src="../../images/icones/boutonConfirmer.png" class="imgButton confirmer" title="Confirmer" alt="Confirmer"/>
-					</a>
+					</a>-->
+					<input type="image" src="../../images/icones/boutonConfirmer.png" class="imgButton confirmer" title="Confirmer" alt="Confirmer" onclick="return verifyPassEmail();"/>
 					<br/>
 					
 					<?php
-					/*if ($_SERVER["REQUEST_METHOD"] == "POST") {
-						if(isset($_POST['email']) && !empty($_POST['email'])){
+					//Inscrire ou modifier le profil d'un utilisateur
+					if ($_SERVER["REQUEST_METHOD"] == "POST") {
+						//Vérifie si le email est rempli
+						//if(isset($_POST['courriel']) && !empty($_POST['courriel'])){
+							
+							$no_civique = $_POST["no_civique"];
+							$rue = $_POST["rue"];
+							$ville = $_POST["ville"];
+							$code_postal = $_POST["code_postal"];
+							$courriel = $_POST["courriel"];
+							$mot_de_passe = $_POST["mot_de_passe"];
+							$nom = $_POST["nom"];
+							$prenom = $_POST["prenom"];
+							$telephone = $_POST["telephone"];
+							$infolettre = $_POST["infolettre"];
+							
 							try{
-								$dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
+								$dbh = db_connect();
+								
+								//Verifier pour meme courriel
+								foreach($dbh->query('SELECT * from utilisateur') as $row) {
+									if(($row["courriel"]==$_POST["courriel"]))
+									{
+										 echo '<script type="text/javascript">';
+										 echo 'alert("Le courriel est déja utilisé");';
+										 echo '</script>';
+										 //break
+									} 
+								}
+									
 								if (isset($_SESSION['pk_utilisateur'])) {
-									//profil
-									foreach($dbh->query('SELECT * from utilisateur') as $row) {
-										if(($row["courriel"]==$_POST["courriel1"]))
-										{
-											 echo '<script type="text/javascript">';
-											 echo 'alert("Le courriel est déja utilisé");';
-											 echo '</script>';
-											 //break
-										} 
-									}
-									//update profil
+								//Modifier le profil
 									
 									
 								} else {
-									//inscrire nouveau profil dans la base de données
-									$sql = '';
-									if ($dbh->query($sql) === true) {
-										echo "Utilisateur inscrit";
-									} 
+									//Inscrire le nouveau profil dans la base de données
+									try {
+										$sql1 = 'INSERT INTO `adresse` (`no_civique`, `rue`, `fk_ville`, `code_postal`) 
+										VALUES (:no_civique, :rue, :ville, :code_postal);';
+										
+										$sql2 = 'INSERT INTO utilisateur (courriel, mot_de_passe, administrateur) 
+										VALUES (:courriel, :mot_de_passe, "0");';
+										
+										$sql3 = 'INSERT INTO client (fk_utilisateur, prenom, nom, fk_adresse, telephone, infolettre) 
+										VALUES ((SELECT pk_utilisateur FROM utilisateur WHERE courriel=:courriel2), :prenom, :nom,
+										(SELECT pk_adresse FROM adresse WHERE rue=:rue2), :telephone, :infolettre);';
+
+										$dbh->beginTransaction();
+										$stmt1 = $dbh->prepare($sql1);
+										$stmt1->execute(['no_civique' => $no_civique, 'rue' => $rue, 'ville' => $ville,
+											'code_postal' => $code_postal]);
+										
+										$stmt2 = $dbh->prepare($sql2);
+										$stmt2->execute(['courriel' => $courriel, 'mot_de_passe' => $mot_de_passe]);
+										
+										$stmt3 = $dbh->prepare($sql3);
+										$stmt3->execute(['courriel2' => $courriel, 'prenom' => $prenom, 'nom' => $nom, 'rue2' => $rue,
+										'telephone' => $telephone, 'infolettre' => $infolettre]);
+										
+										$dbh->commit();
+										
+										//Message de succès
+										echo '<script type="text/javascript">';
+										echo 'alert("Profil inscrit!");';
+										echo '</script>';
+										
+										header("location: pages/communes/Catalogue.php");
+										
+									}catch (Exception $e){
+										$dbh->rollback();
+										throw $e;
+									}
 								}
 								
 								$dbh = null;
@@ -194,9 +217,8 @@
 								print "Error!: " . $e->getMessage() . "<br/>";
 								die();
 							}
-							
-						}							
-					}*/
+						//}							
+					}
 					?>
 				
 			</form>
@@ -214,7 +236,7 @@
 							}, 0001);
 						}
 						break;
-					case "codepostal":
+					case "code_postal":
 						if(!/^[a-z][0-9][a-z](\s|-)?[0-9][a-z][0-9]$/i.test(document.profil.codepostal.value)) {
 							alert('Erreur code postal : A9A 9A9 | A9A-9A9 | A9A9A9');
 							setTimeout(function(){ 
@@ -222,7 +244,7 @@
 							}, 0001);
 						}
 						break;
-					case "courriel1":
+					case "courriel":
 						if(!/^([a-z0-9._-]+)@([a-z0-9._-]+)\.([a-z]{2,6})$/i.test(document.profil.courriel1.value)) {
 							alert('Erreur courriel : compte@domaine.ext | compte@255.255.255.0');	
 							setTimeout(function(){ 
@@ -243,16 +265,18 @@
 			
 			//Vérifier les deux email et les deux passsword
 			function verifyPassEmail() {
-				if (document.profil.courriel1.value != document.profil.courriel2.value ) {
+				if (document.profil.courriel.value != document.profil.courriel2.value ) {
 					alert("Courriel différent");
 					return false;
-				} else if (document.profil.password1.value != document.profil.password2.value) {
+				} else if (document.profil.mot_de_passe.value != document.profil.mot_de_passe2.value) {
 					alert("Mot de passe différent");
 					return false;
 				} else {
 					return true;
 				}
 			}
+			
+			//verifier le mot de passe -> a faire
 		
 		</script>
 	
