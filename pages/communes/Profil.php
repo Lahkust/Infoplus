@@ -9,10 +9,13 @@
 /*******************************************************************************************************/
 /* Inscription ou modification du profil pour un utilisateur */
 /*******************************************************************************************************/
+Todo : validation form; critère mot de passe; update profil; changer css avec bootstrap
 -->
 <?php
 	require_once '../../Objects/Connection.php';
 	session_start();
+	
+	$infolettre = "";
 ?>
 <!doctype html>
 <html lang="fr">
@@ -130,10 +133,7 @@
 						}
 					?>
 
-					<!-- Confirmer -->
-					<!--<a href="#" onclick="return verifyPassEmail();">
-						<img src="../../images/icones/boutonConfirmer.png" class="imgButton confirmer" title="Confirmer" alt="Confirmer"/>
-					</a>-->
+					<!-- Submit -->
 					<input type="image" src="../../images/icones/boutonConfirmer.png" class="imgButton confirmer" title="Confirmer" alt="Confirmer" onclick="return verifyPassEmail();"/>
 					<br/>
 					
@@ -164,7 +164,8 @@
 										 echo '<script type="text/javascript">';
 										 echo 'alert("Le courriel est déja utilisé");';
 										 echo '</script>';
-										 //break
+										 
+										 break 2;
 									} 
 								}
 									
