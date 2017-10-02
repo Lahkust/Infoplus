@@ -66,7 +66,7 @@ function random_num($size) {
 				$rabais = $rabais /100;
 				
 				//on retient l'id de ce que l'on va tester
-				$id = substr($key,6);
+				$id = substr($key,7);
 				
 				//on vérifie si on doit modifier ou ajouter
 				$ajout = true;
@@ -101,7 +101,6 @@ function random_num($size) {
 				$rabais = '';
 			}
 		
-		echo "<p>{$key} = {$value}</p>";
 		}
 	
 	
