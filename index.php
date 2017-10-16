@@ -5,7 +5,7 @@
 /* Auteur ....................... : Guillaume Bergs */
 /* Date de création ............. : 2017-08-23 */
 /* Date de mise en ligne ........ : 2017-08-23 */
-/* Date de mise à jour .......... : 2017-09-10 */
+/* Date de mise à jour .......... : 2017-10-11 */
 /*******************************************************************************************************/
 /* index */
 /*******************************************************************************************************/
@@ -18,7 +18,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Index</title>
-		
+
 		<link rel="stylesheet" href="styles/style.css">
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -28,6 +28,36 @@
 	</head>
 	
 	<body>
+
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '1890245087970829',
+                cookie     : true,
+                xfbml      : true,
+                version    : 'v2.10'
+            });
+            FB.AppEvents.logPageView();
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.10&appId=1890245087970829";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
 		<header>
 			<?php include_once 'pages/Entete.php' ?>
 		</header>
@@ -115,9 +145,11 @@
 				<div class="row">
 					<div class="col-md-4"></div>
 					<div class="col-md-4">
-						<a href="pages/communes/Erreur404.php">
+						<!--a href="pages/communes/Erreur404.php">
 							<img src="images/icones/facebook.png" class="imgButton" title="Facebook" alt="Facebook"/>
-						</a>
+						</a-->
+
+                        <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
 					</div>
 					<div class="col-md-4"></div>
 				</div>
@@ -128,3 +160,16 @@
 		</footer>
 	</body>
 </html>
+<script src="https://www.gstatic.com/firebasejs/4.5.0/firebase.js"></script>
+<script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyApjuXfKrP3TaaWFQfVuORFJev9CEagFvI",
+        authDomain: "infoplus-31c9e.firebaseapp.com",
+        databaseURL: "https://infoplus-31c9e.firebaseio.com",
+        projectId: "infoplus-31c9e",
+        storageBucket: "infoplus-31c9e.appspot.com",
+        messagingSenderId: "352374497968"
+    };
+    firebase.initializeApp(config);
+</script>

@@ -10,14 +10,12 @@
 /* modifier les existantes et les appliquer en masse 															   */
 /*******************************************************************************************************************/
 
-
-
-
 function addPromo(ran)
 {
 	var insertLine = "<div class='row service_entry'>";
 			insertLine += "<div class='col-md-6'>";
-				insertLine += "<input type='text' class='form-control' name='titre_"+ran+"' >";			insertLine += "</div>";
+				insertLine += "<input type='text' class='form-control' name='titre_"+ran+"' >";
+			insertLine += "</div>";
 			insertLine += "<div class='col-md-5'>";
 				insertLine += "<input type='text' class='form-control' name='rabais_"+ran+"'>";
 			insertLine += "</div>";
@@ -50,4 +48,3 @@ function modifyPromo(ran)
 	$( rabaisId ).prop('disabled', false);
 	
 }
-
