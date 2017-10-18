@@ -62,7 +62,7 @@ $dbh = db_connect();  ?>
 
         <!-- Modal content -->
         <div class="modal-content" id="requete">
-            <?php include_once '../administrateurs/GestionService.php' ?>
+            <?php //include_once '../administrateurs/GestionService.php' ?>
         </div>
 
     </div>
@@ -167,7 +167,7 @@ $dbh = db_connect();  ?>
 										if($_SESSION['administrateur'] == 0) {
 											?>
 												<div class='btn_add'>
-													<a href='http://www.perdu.com'>
+													<a href='#' id="ajouterPanier">
 														<img src='../../images/icones/panier.png' class='btn_add imgButton'/>
 													</a>
 												</div>
@@ -267,13 +267,42 @@ $dbh = db_connect();  ?>
         //fenetre modale
         var modal = document.getElementById('myModal');
         var ajServ = document.getElementById('ajouterService');
-        var modServ = document.getElementById('modifierService');
+        //var modServ = document.getElementById('modifierService');
+        var ajPan = document.getElementById('ajouterPanier');
 
         $(document).ready(function() {
-            $(ajServ).click(function() {
+            $("#ajouterService").click(function() {
                 modal.style.display = "block";
                 //var string = "include '../administrateurs/GestionService.php';
                 //$("#ajouterService").html(string);
+            });
+
+            $("#ajouterPanier").click(function() {
+                modal.style.display = "block";
+                var Id = $(this).attr('id');
+                var txt = document.getElementById(Id).innerText;
+
+
+                var dataString = { 'id': id};
+
+                $.ajax({
+                    type:"POST",
+                    url:"",
+                    data: dataString,
+                    success: function(data){
+                        var result = JSON.parse(data);
+
+                        var string = "<div class='container-fluid'><div class='row'><div class='col-md-10'>Titre</div><div class='col-md-2'>" +
+                            "Prix</div></div><div class='row'><div class='col-md-12'>Description</div></div><div class='row'><div class='col-md-12'>" +
+                            "<a href='#'>Ajouter au panier</a></div></div></div>";
+
+                        $("#requete").html(string);
+                    },
+                    error:      function(jqXHR,textStatus,errorThrown){
+                        alert(JSON.stringify(jqXHR)+" "+textStatus+" "+errorThrown);
+                        //alert("error occurred");
+                    }
+                });
             });
 
             /*$(modServ).click(function() {
