@@ -15,6 +15,15 @@ Todo : validation form; critère mot de passe; update profil; changer css avec b
 	require_once '../../Objects/Connection.php';
 	session_start();
 	
+	$nom="";
+	$prenom="";
+	$nocivic="";
+	$rue="";
+	$ville="";
+	$codepostal="";
+	$telephone="";
+	$courriel="";
+	$motdepasse="";
 	$infolettre = "";
 ?>
 <!doctype html>
@@ -78,7 +87,7 @@ Todo : validation form; critère mot de passe; update profil; changer css avec b
 				<div class="row">
 					<div class="textRouge col-12">Tous les champs sont obligatoires</div>
 				</div>	
-					<input type="text" name="nom" placeholder="Nom" value="" required>
+					<input type="text" name="nom" placeholder="Nom" echo <?php echo "value='" . $nom . "'";?> required>
 					<input type="text" name="prenom" placeholder="Prénom" value="" required><br/>
 					
 					<input class="rue" type="text" name="no_civique" placeholder="No civique" value="" required>
@@ -165,7 +174,7 @@ Todo : validation form; critère mot de passe; update profil; changer css avec b
 										 echo 'alert("Le courriel est déja utilisé");';
 										 echo '</script>';
 										 
-										 break 2;
+										 break;
 									} 
 								}
 									
