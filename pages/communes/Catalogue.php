@@ -46,8 +46,21 @@ $dbh = db_connect();  ?>
 			});
 				
 		}
+		  <!-- Load Facebook SDK for JavaScript -->
+		  <div id="fb-root"></div>
+		  <script>(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+			fjs.parentNode.insertBefore(js, fjs);
+		  }(document, 'script', 'facebook-jssdk'));</script>
 		
+		</script>
 		
+		<!-- Placez cette balise dans l'en-tête ou juste avant la balise de fermeture du corps de texte. -->
+		<script src="https://apis.google.com/js/platform.js" async defer>
+		  {lang: 'fr'}
 		</script>
 	</head>
 	
@@ -56,6 +69,14 @@ $dbh = db_connect();  ?>
 	</header>
 	
 	<body>
+<<<<<<< HEAD
+	
+	
+	
+
+		
+	
+=======
 
     <!--la fenêtre modal service-->
     <div id="myModal" class="modal">
@@ -67,9 +88,9 @@ $dbh = db_connect();  ?>
 
     </div>
 
+>>>>>>> origin/master
 <?php
 	try {
-		
 			//Code pour le bouton d'ajout
 			include_once '../../objects/Promotion.php';
 			if (isset($_SESSION['administrateur'])) {
@@ -233,9 +254,30 @@ $dbh = db_connect();  ?>
 									</div>
 									
 									<div class='col-1'>
-										<a href='http://www.perdu.com'>
-											<img src='../../images/icones/medias sociaux.jpeg' class='btn_sociaux imgButton'/>
-										</a>
+										<ul class="nav nav-pills nav-justified">
+											<li class="nav-item dropdown">
+												<a class="nav-item dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+													<img src='../../images/icones/medias_sociaux.jpeg' class='btn_sociaux imgButton'/>
+												</a>
+												<div class="dropdown-menu">
+													<a class="dropdown-item" href="#">
+														  <!-- Your share button code -->
+														  <div class="fb-share-button"  data-href="http://www.your-domain.com/your-page.html"  data-layout="button_count">
+															Partager Sur Facebook
+														  </div>
+													</a>
+													
+													
+													<a class="dropdown-item" target="_blank" href="https://twitter.com/intent/tweet?text=<?php echo $row["tarif"] . '%24%20pour%20un%20cours%20sur%20' . $row["service_titre"] . '%3F!%20'?>Magnifique%20offre%20chez%20%40Infoplusplus%20!%20%23bonplan%20%23viking">
+															Partager sur Twitter
+													</a>
+													<a class="dropdown-item" href="#">
+														<!-- Placez cette balise où vous souhaitez faire apparaître le gadget bouton "Partager". -->
+														<div class="g-plus" data-action="share" data-annotation="none"></div>
+													</a>
+												</div>
+											</li>
+										</ul>
 									</div>
 									<?php
 							}
