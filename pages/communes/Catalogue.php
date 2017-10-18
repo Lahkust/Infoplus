@@ -56,7 +56,17 @@ $dbh = db_connect();  ?>
 	</header>
 	
 	<body>
-	
+
+    <!--la fenêtre modal service-->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" id="requete">
+            <?php include_once '../administrateurs/GestionService.php' ?>
+        </div>
+
+    </div>
+
 <?php
 	try {
 		
@@ -69,7 +79,7 @@ $dbh = db_connect();  ?>
 					<div class='row'>
 						<div class='col-9'></div>
 						<div class='col-3 service_add'>
-							<a href='../administrateurs/GestionService.php' target="_blank">
+							<a href='#' id="ajouterService">
 								Ajouter un service
 							</a>
 						</div>
@@ -102,7 +112,7 @@ $dbh = db_connect();  ?>
 											</button>
 											<ul class='dropdown-menu'>
 												<li>
-													<a href='../administrateurs/GestionService.php?idService=<?php echo $row['pk_service'] ?>' target="_blank">
+													<a href='../administrateurs/GestionService.php?idService=<?php echo $row['pk_service'] ?>' id="modifierService" target="_blank">
 														Modifier
 													</a>
 												</li>
@@ -252,7 +262,35 @@ $dbh = db_connect();  ?>
 ?>
 	</div>
 	</body>
-	
+	<script type="text/javascript">
+
+        //fenetre modale
+        var modal = document.getElementById('myModal');
+        var ajServ = document.getElementById('ajouterService');
+        var modServ = document.getElementById('modifierService');
+
+        $(document).ready(function() {
+            $(ajServ).click(function() {
+                modal.style.display = "block";
+                //var string = "include '../administrateurs/GestionService.php';
+                //$("#ajouterService").html(string);
+            });
+
+            /*$(modServ).click(function() {
+                modal.style.display = "block";
+                $("#requete").html(string);
+            });*/
+        });
+
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+
+    </script>
 	<footer>
 	</footer>
 	

@@ -10,11 +10,11 @@
 /* Permet de créer, désactiver ou modifer un service */
 /*******************************************************************************************************/
 -->
-
+<!--
 <!doctype html>
-<html lang="fr">
+<html lang="fr">-->
 	<?php 
-		session_start();
+		//session_start();
 		require_once '../../Objects/Connection.php';
 		$dbh = db_connect();
 		
@@ -98,7 +98,7 @@
 				
 	?>
 	
-	<head>
+	<!--<head>
 		<meta charset="utf-8">
 		<title>GestionService</title>
 		<link rel="stylesheet" href="../../styles/style.css">
@@ -111,8 +111,8 @@
 	</head>
 	<body>
 		<header>
-			<?php include_once '../Entete.php' ?>
-		</header>
+			<?php //include_once '../Entete.php' ?>
+		</header>-->
 		
 		<div class="container-fluid borderFacture">
 			<form method="post"  action = "" enctype="multipart/form-data">
@@ -160,8 +160,8 @@
 			</form>
 		</div>
 		
-		
+		<!--
 		<footer>
 		</footer>
 	</body>
-</html>
+</html>-->
