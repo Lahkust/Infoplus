@@ -22,19 +22,20 @@
 		<meta charset="utf-8">
 		<title>Facture</title>
 		<link rel="stylesheet" href="../../styles/style.css">
-		
+
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-	
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	</head>
 	<body>
 		<header>
 			<?php include_once '../Entete.php' ?>
 		</header>
-		
-		<?php try {
+
+        <?php try {
 			$i = 0;
 			$dbh1 = db_connect();		
 			foreach($dbh1->query('select * from client a join facture b on a.pk_client=b.fk_client join ta_facture_service c 
@@ -52,8 +53,8 @@
 										<div class="col-md-2 nofacture">
 											<?php print_r($row["pk_facture"]); ?>
 										</div>
-										<div class="col-md-5 nom">
-											<?php print_r(" " . $row["prenom"] . " " . $row["nom"]); ?>
+										<div class="col-md-5">
+											<a href="#" class="nom" <?php echo 'id="info' . $i . '"'?>><?php print_r(" " . $row["prenom"] . " " . $row["nom"]); ?></a>
 										</div>
 										<div class="col-md-3 date">
 											<?php print_r(date("d/m/Y", strtotime($row["date_service"]))); ?>
@@ -161,8 +162,60 @@
 		}
 		$dbh1 = null;
 		?>
-		
-		<script>
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content" id="requete">
+                <p>Requete selon facture</p>
+            </div>
+
+        </div>
+
+		<script type="text/javascript">
+            var modal = document.getElementById('myModal');
+
+            $(document).ready(function() {
+                $('.nom').click(function() {
+                    modal.style.display = "block";
+                    var Id = $(this).attr('id');
+                    var txt = document.getElementById(Id).innerText;
+
+                    txt = txt.split(' ');
+                    var prenom = txt[0];
+                    console.log(nom);
+                    var nom = txt[1];
+                    console.log(prenom);
+                    var dataString = { 'nom': nom, 'prenom': prenom };
+
+                    //Aller chercher les informations
+                   $.ajax({
+                        type:"POST",
+                        url:"../../scripts/InfoClient.php",
+                        data: dataString,
+                        success: function(data){
+                            var result = JSON.parse(data);
+
+                            var string = "<p>" + result.prenom + " " + result.nom + " " + result.telephone +"</p><p>" +
+                                result.no_civique +", " + result.rue +", " + result.ville +", " + result.code_postal +"</p>";
+
+                            $("#requete").html(string);
+                        },
+                       error:      function(jqXHR,textStatus,errorThrown){
+                           alert(JSON.stringify(jqXHR)+" "+textStatus+" "+errorThrown);
+                           //alert("error occurred");
+                       }
+                    });
+                });
+            });
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
 		//function qui cache detail et apparait reduire ou l'inverse
 		function hideDetail() {
 			var x = document.getElementById('hide');
