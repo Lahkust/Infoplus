@@ -20,21 +20,20 @@ $dbh = db_connect();  ?>
 		<meta charset="utf-8">
 		<title>Connexion</title>
 		<link rel="stylesheet" href="../../styles/style.css"/>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="../../scripts/GestionPromotions.js"></script>
 		
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-		
-		
-		
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 		
 		<script>
 		//Por supprimer une association 
 		
-		function deleteConnection(idPromoService)
+		/*function deleteConnection(idPromoService)
 		{
 			$.ajax({
 			method: "POST",
@@ -45,7 +44,7 @@ $dbh = db_connect();  ?>
 			alert( "The deed is done." );
 			});
 				
-		}
+		}*/
 		  <!-- Load Facebook SDK for JavaScript -->
 		  <div id="fb-root"></div>
 		  <script>(function(d, s, id) {
@@ -69,16 +68,6 @@ $dbh = db_connect();  ?>
 	</header>
 	
 	<body>
-
-    <!--la fenêtre modal service-->
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
-        <div class="modal-content" id="requete">
-            <?php //include_once '../administrateurs/GestionService.php' ?>
-        </div>
-
-    </div>
 
 <?php
 	try {
@@ -179,8 +168,8 @@ $dbh = db_connect();  ?>
 										if($_SESSION['administrateur'] == 0) {
 											?>
 												<div class='btn_add'>
-													<a href='#' <?php echo 'id="ajouterPanier' . $row['pk_service'] . '"'?> >
-														<img src='../../images/icones/panier.png' class='btn_add imgButton'/>
+													<a href="#" >
+														<img <?php echo 'id="ajouterPanier_' . $row['pk_service'] . '"'?> src='../../images/icones/panier.png' class='btn_add imgButton'/>
 													</a>
 												</div>
 											<?php
@@ -294,6 +283,18 @@ $dbh = db_connect();  ?>
 	}
 ?>
 	</div>
+
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content" id="requete">
+            //contenu de la fenetre modale
+        </div>
+
+    </div>
+
 	</body>
 	<script type="text/javascript">
 
@@ -301,46 +302,67 @@ $dbh = db_connect();  ?>
         var modal = document.getElementById('myModal');
 
         $(document).ready(function() {
-            $("#ajouterService").click(function() {
+            //Gestion des services
+            /*$("#ajouterService").click(function() {
                 modal.style.display = "block";
                 //var string = "include '../administrateurs/GestionService.php';
                 //$("#ajouterService").html(string);
-            });
+            });*/
 
-            $("#ajouterPanier").click(function() {
+            //Fenetre pour ajouter au panier un service
+            $("img[id^='ajouterPanier']").click(function (event) {
+
+                //Aller rechercher l'id complet de l'image cliquer
+                var IdPanier = event.target.id;
+                console.log(IdPanier);
+
+                //separer la string pour avoir l'id
+                var res = IdPanier.split("_");
+                console.log(res[1]);
+
+                //string qui contient id du service pour l'envoyer dans la rqt ajax
+                var dataString = {'id': res[1]};
+
+                //Faire apparaitre notre fenetre modale
                 modal.style.display = "block";
-                var Id = $(this).attr('id');
-                var txt = document.getElementById(Id).innerText;*/
-
-                var dataString = { 'id': id};
 
                 $.ajax({
                     type:"POST",
-                    url:"",
+                    url:"../../scripts/InfoService.php",
                     data: dataString,
                     success: function(data){
                         var result = JSON.parse(data);
 
-                        var string = "<div class='row'>" + "<div class='col-md-10'>" + "Titre" + "</div>" +
-                            "<div class='col-md-2'>" + "Prix" + "</div>" + "</div>" + "<div class='row'>" +
-                            "<div class='col-md-12'>" + "Description" + "</div>" + "</div>" + "<div class='row'>" +
-                            "<div class='col-md-12'>" + "<a href='#'>Ajouter au panier</a>" + "</div>" + "</div>";
+                        var string = "<div class='row'>" + "<div class='col-md-10'>" + result.service_titre + "</div>" +
+                            "<div class='col-md-2'>" + result.tarif + "</div>" + "</div>" + "<div class='row'>" +
+                            "<div class='col-md-12'>" + result.service_description + "</div>" + "</div>" + "<div class='row'>" +
+                            "<div class='col-md-12'>" + "<a href='#' id='panierService_" + result.pk_service + "'" + ">Ajouter au panier</a>" + "</div>" + "</div>";
+
+
 
                         $("#requete").html(string);
                     },
-                    error:      function(jqXHR,textStatus,errorThrown){
+                    error: function(jqXHR,textStatus,errorThrown){
                         alert(JSON.stringify(jqXHR)+" "+textStatus+" "+errorThrown);
                         //alert("error occurred");
                     }
                 });
             });
 
-            /*$(modServ).click(function() {
-                modal.style.display = "block";
-                $("#requete").html(string);
-            });*/
-        });
+            //$().on('click', function(event) {
+            $(document).on('click', "a[id^='panierService_']", function(){
 
+                //Aller chercher l'id du service
+                var IdPanier = event.target.id;
+                console.log(IdPanier);
+                var res = IdPanier.split("_");
+                console.log(res[1]);
+
+                $.post("../../scripts/AjouterServicePanier.php", {"id_service": res[1]});
+                location.reload();
+            });
+
+        });
 
         window.onclick = function(event) {
             if (event.target == modal) {

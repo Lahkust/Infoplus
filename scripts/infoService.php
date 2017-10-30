@@ -10,7 +10,7 @@ require_once '../Objects/Connection.php';
 
 $dbh1 = db_connect();
 
-$id = $_POST['idService'];
+$id = $_POST['id'];
 
 $stmt = $dbh1->prepare('SELECT * FROM service a WHERE a.pk_service=:id');
 

@@ -22,7 +22,6 @@
 			<div class="col-md-4">
 		
 				<?php
-				
 				//Commence par vérifier si il a une variable administrateur
 				if (isset($_SESSION['administrateur'])) {
 					
@@ -37,7 +36,7 @@
 							<div class="col-md-4">
 							</div>
 							<div class="col-md-4">
-								<a href="../communes/Erreur404.php" class="optionEnteteText align-middle">Mon panier (1)</a>
+								<a href="../communes/Erreur404.php" class="optionEnteteText align-middle">Mon panier (<?php echo count($_SESSION["panier"]); ?>)</a>
 							</div>
 							<div class="col-md-4">
 								<a href="../communes/Logout.php" class="optionEnteteText align-middle">Se déconnecter</a>
