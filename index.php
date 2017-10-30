@@ -62,36 +62,36 @@
 			<?php include_once 'pages/Entete.php' ?>
 		</header>
 	
-<?php
-   define('DB_SERVER', 'localhost');
-   define('DB_USERNAME', 'root');
-   define('DB_PASSWORD', '');
-   define('DB_DATABASE', 'infoplus');
-   $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-   
-   if($_SERVER["REQUEST_METHOD"] == "POST") {
-      $dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
-	  $is_admin=0;
-	  $is_in_db = false;
-	  foreach($dbh->query('SELECT * from utilisateur') as $row)
-	  {
-		  if(($row["courriel"]==$_POST["mail"])&&($row["mot_de_passe"])==$_POST["password"])
-		{
-			$is_in_db = true;
-			$is_admin = $row["administrateur"];
-			$pk_utilisateur = $row["pk_utilisateur"];
-		}
-	  }
-		
-      if($is_in_db) {
-         $_SESSION['pk_utilisateur'] = $pk_utilisateur;
-		 $_SESSION['administrateur'] = $is_admin;
-         header("location: pages/communes/Catalogue.php");
-      }else {
-         echo "<script type='text/javascript'>alert('Courriel ou mot de passe invalide!')</script>";
-      }
-   }
-?>
+        <?php
+           define('DB_SERVER', 'localhost');
+           define('DB_USERNAME', 'root');
+           define('DB_PASSWORD', '');
+           define('DB_DATABASE', 'infoplus');
+           $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+
+           if($_SERVER["REQUEST_METHOD"] == "POST") {
+              $dbh = new PDO('mysql:host=localhost;dbname=infoplus', 'root', '');
+              $is_admin=0;
+              $is_in_db = false;
+              foreach($dbh->query('SELECT * from utilisateur') as $row)
+              {
+                  if(($row["courriel"]==$_POST["mail"])&&($row["mot_de_passe"])==$_POST["password"])
+                {
+                    $is_in_db = true;
+                    $is_admin = $row["administrateur"];
+                    $pk_utilisateur = $row["pk_utilisateur"];
+                }
+              }
+
+              if($is_in_db) {
+                 $_SESSION['pk_utilisateur'] = $pk_utilisateur;
+                 $_SESSION['administrateur'] = $is_admin;
+                  exit(header("location: pages/communes/Catalogue.php"));
+              }else {
+                 echo "<script type='text/javascript'>alert('Courriel ou mot de passe invalide!')</script>";
+              }
+           }
+        ?>
 		<main>
 			<form method="post"  action = "" enctype="multipart/form-data">
 				<!-- Intitulé -->

@@ -69,14 +69,6 @@ $dbh = db_connect();  ?>
 	</header>
 	
 	<body>
-<<<<<<< HEAD
-	
-	
-	
-
-		
-	
-=======
 
     <!--la fenêtre modal service-->
     <div id="myModal" class="modal">
@@ -88,7 +80,6 @@ $dbh = db_connect();  ?>
 
     </div>
 
->>>>>>> origin/master
 <?php
 	try {
 			//Code pour le bouton d'ajout
@@ -188,7 +179,7 @@ $dbh = db_connect();  ?>
 										if($_SESSION['administrateur'] == 0) {
 											?>
 												<div class='btn_add'>
-													<a href='#' id="ajouterPanier">
+													<a href='#' <?php echo 'id="ajouterPanier' . $row['pk_service'] . '"'?> >
 														<img src='../../images/icones/panier.png' class='btn_add imgButton'/>
 													</a>
 												</div>
@@ -308,9 +299,6 @@ $dbh = db_connect();  ?>
 
         //fenetre modale
         var modal = document.getElementById('myModal');
-        var ajServ = document.getElementById('ajouterService');
-        //var modServ = document.getElementById('modifierService');
-        var ajPan = document.getElementById('ajouterPanier');
 
         $(document).ready(function() {
             $("#ajouterService").click(function() {
@@ -322,8 +310,7 @@ $dbh = db_connect();  ?>
             $("#ajouterPanier").click(function() {
                 modal.style.display = "block";
                 var Id = $(this).attr('id');
-                var txt = document.getElementById(Id).innerText;
-
+                var txt = document.getElementById(Id).innerText;*/
 
                 var dataString = { 'id': id};
 
@@ -334,9 +321,10 @@ $dbh = db_connect();  ?>
                     success: function(data){
                         var result = JSON.parse(data);
 
-                        var string = "<div class='container-fluid'><div class='row'><div class='col-md-10'>Titre</div><div class='col-md-2'>" +
-                            "Prix</div></div><div class='row'><div class='col-md-12'>Description</div></div><div class='row'><div class='col-md-12'>" +
-                            "<a href='#'>Ajouter au panier</a></div></div></div>";
+                        var string = "<div class='row'>" + "<div class='col-md-10'>" + "Titre" + "</div>" +
+                            "<div class='col-md-2'>" + "Prix" + "</div>" + "</div>" + "<div class='row'>" +
+                            "<div class='col-md-12'>" + "Description" + "</div>" + "</div>" + "<div class='row'>" +
+                            "<div class='col-md-12'>" + "<a href='#'>Ajouter au panier</a>" + "</div>" + "</div>";
 
                         $("#requete").html(string);
                     },

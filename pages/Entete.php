@@ -1,4 +1,5 @@
-<!-- /**************************************************************************************************/
+<?php
+/**************************************************************************************************/
 /* Fichier ...................... : EnteteNonConnect.php */
 /* Type ......................... : Document PHP */
 /* Titre ........................ : Entête pour le site*/
@@ -9,10 +10,8 @@
 /*******************************************************************************************************/
 /* Entête pour le site. L'entête change s'il y a un utilisateur, administrateur ou personne de connecté. */
 /*******************************************************************************************************/
--->
-<!DOCTYPE HTML>
-<html lang="fr">
 
+?>
 <head>
 	<link rel="stylesheet" href="../../styles/style.css">
 </head>
@@ -54,11 +53,13 @@
 							<div class="col-md-4 recherche">
 								<img src="../../images/icones/loupe.png" Title="Rechercher"/>
 							</div>			
-						</div>								
-						<?php
+						</div>
+
+                            <?php
 						//si c'est un admin
 					} else {
-						?>			
+					    ?>
+
 						<img src="../../images/icones/logo.png" class="infoPlusPlus" Title="Info++"/>
 						</div>
 						<div class="col-md-8">
@@ -82,11 +83,14 @@
 							<div class="col-md-4 recherche">
 								<img src="../../images/icones/loupe.png" Title="Rechercher"/>
 							</div>			
-						</div>							
-						<?php
+						</div>
+
+                            <?php
 					}
 					//sinon un visiteur
-				} else { ?>
+				} else {
+				    ?>
+
 						<img src="images/icones/logo.png" class="infoPlusPlus" Title="Info++"/>
 						</div>
 						<div class="col-md-8">
@@ -109,11 +113,11 @@
 							<div class="col-md-4 recherche">
 								<img src="images/icones/loupe.png" Title="Rechercher"/>
 							</div>			
-						</div>							
-					<?php
-				}
-				?>
+						</div>
 
+                            <?php
+				    }
+				    ?>
 		</div>
 	</div>
 </body>
