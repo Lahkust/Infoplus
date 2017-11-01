@@ -18,6 +18,9 @@
 	//array qui contient les id des services sélectionnes
     $array= array();
     $_SESSION["panier"] = $array;
+
+    //variable pour savoir si un rabais a été appliqué
+    $_SESSION["nbrRabais"] = 0;
 	?>
 	
 	<head>
