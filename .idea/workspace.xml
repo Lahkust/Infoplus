@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff1cc02e-5fe3-473c-8738-c1eb5ce6c96c" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Entete.php" afterPath="$PROJECT_DIR$/pages/Entete.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/clients/Panier.php" afterPath="$PROJECT_DIR$/pages/clients/Panier.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/communes/Catalogue.php" afterPath="$PROJECT_DIR$/pages/communes/Catalogue.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/scripts/RetirerServicePanier.php" afterPath="$PROJECT_DIR$/scripts/RetirerServicePanier.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -47,7 +42,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Panier.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Panier.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/clients/Panier.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="508">
@@ -60,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RetirerServicePanier.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RetirerServicePanier.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/RetirerServicePanier.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -113,8 +108,8 @@
         <option value="$PROJECT_DIR$/pages/Entete.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/pages/communes/Catalogue.php" />
-        <option value="$PROJECT_DIR$/scripts/RetirerServicePanier.php" />
         <option value="$PROJECT_DIR$/pages/clients/Panier.php" />
+        <option value="$PROJECT_DIR$/scripts/RetirerServicePanier.php" />
       </list>
     </option>
   </component>
@@ -264,7 +259,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66707000" />
+    <option name="totallyTimeSpent" value="66819000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="1176" extended-state="6" />
@@ -755,14 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/RetirerServicePanier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/clients/Panier.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="508">
@@ -771,6 +758,14 @@
             <marker date="1509568344182" expanded="true" signature="2164:2205" ph="SELECT * fro... service" />
             <marker date="1509568344182" expanded="true" signature="3398:3548" ph="SELECT * FRO... promotion" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/RetirerServicePanier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="15" column="2" lean-forward="true" selection-start-line="15" selection-start-column="2" selection-end-line="15" selection-end-column="2" />
+          <folding />
         </state>
       </provider>
     </entry>

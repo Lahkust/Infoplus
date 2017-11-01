@@ -11,6 +11,6 @@ session_start();
 $id = $_POST['id_service'];
 
 //Enlève le service du panier
-unset($_SESSION["panier"][$id]);
+array_splice($_SESSION["panier"], $id, 1);
 
 ?>
