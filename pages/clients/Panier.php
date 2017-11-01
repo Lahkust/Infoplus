@@ -1,4 +1,4 @@
-<!-- /**************************************************************************************************/
+<?php/**************************************************************************************************/
 /* Fichier ...................... : Panier.php */
 /* Type ......................... : Document PHP */
 /* Titre ........................ : Panier*/
@@ -9,12 +9,14 @@
 /*******************************************************************************************************/
 /* Catalogue */
 /*******************************************************************************************************/
--->
+?>
 <!doctype HTML>
 <html lang="fr">
 <?php	 session_start();
 require_once '../../Objects/Connection.php';
-$dbh = db_connect();  ?>
+$dbh = db_connect();
+
+?>
 
 <head>
     <meta charset="utf-8">
@@ -76,7 +78,7 @@ try {
                             //TODO: modifier le statement pour ne prendre que les promotions actives
                             foreach($dbh->query('SELECT * FROM promotion JOIN ta_promotion_service ON promotion.pk_promotion = ta_promotion_service.fk_promotion AND ta_promotion_service.fk_service = '.$row["pk_service"]) as $row2) {
 
-                                $promos[$row2["pk_promotion_service"]] = new Promotion($row2);
+
 
                                 //TODO: code pour afficher le prix des promotions
 
@@ -96,7 +98,7 @@ try {
                             </div>
                             <div class="col-md-3">
                                 <a href="#" id="retirer_service_<?php echo $id_service_panier_tableau?>">Retirer</a>
-                                <?php $id_service_panier_tableau +=1; ?>
+                                <?php $id_service_panier_tableau +=1;?>
                             </div>
                         </div>
                     </div>
@@ -154,8 +156,8 @@ try {
                             <div class="col-md-12">
                                 <div class="row">Sous-total: <?php echo $sousTotal?></div>
                                 <div class="row">Promotions: <?php echo $rabaisTotal?></div>
-                                <div class="row">Rabais additionnel: <?php echo $promoAdditionnelle?></div>
-                                <div class="row">Total: <?php echo $sousTotal - $rabaisTotal - $promoAdditionnelle?></div>
+                                <div class="row" id="promoAddtionnelle">Rabais additionnel: <?php echo $_SESSION["promoAdditionnelle"];?></div>
+                                <div class="row">Total: <?php echo $sousTotal - $rabaisTotal - $_SESSION["promoAdditionnelle"];?></div>
                             </div>
                         </div>
                         <div class="row">
@@ -172,90 +174,75 @@ try {
     <div class='col-1'></div>
 </div>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-    <!-- Modal content -->
-    <div class="modal-content" id="requete">
-        //contenu de la fenetre modale
-    </div>
-
-</div>
-
 </body>
 <script type="text/javascript">
 
-    //fenetre modale
-    var modal = document.getElementById('myModal');
-
     $(document).ready(function() {
-        //Gestion des services
-        /*$("#ajouterService").click(function() {
-            modal.style.display = "block";
-            //var string = "include '../administrateurs/GestionService.php';
-            //$("#ajouterService").html(string);
-        });*/
 
-        //Fenetre pour ajouter au panier un service
-        $("img[id^='ajouterPanier']").click(function (event) {
+            //rabais promotionnel
+            //click sur boutton valider
+            $("#btn_promo").click(function (event) {
 
-            //Aller rechercher l'id complet de l'image cliquer
-            var IdPanier = event.target.id;
-            console.log(IdPanier);
+                //Vérifier si un rabais a été appliqué
+                var myElement = document.getElementById("promoAddtionnelle");
+                if ( myElement == 0)
+                {
+                //Aller chercher la valeur du code promontionnel
 
-            //separer la string pour avoir l'id
-            var res = IdPanier.split("_");
-            console.log(res[1]);
+                //separer la string pour avoir l'id
+                var res = IdPanier.split("_");
+                console.log("Test");
 
-            //string qui contient id du service pour l'envoyer dans la rqt ajax
-            var dataString = {'id': res[1]};
+                //string qui contient id du service pour l'envoyer dans la rqt ajax
+                var dataString = {'rabais': res[1]};
 
-            //Faire apparaitre notre fenetre modale
-            modal.style.display = "block";
+                $.ajax({
+                    type: "POST",
+                    url: "../../scripts/ajouterRabais.php",
+                    data: dataString,
+                    success: function (data) {
+                        var result = JSON.parse(data);
 
-            $.ajax({
-                type:"POST",
-                url:"../../scripts/InfoService.php",
-                data: dataString,
-                success: function(data){
-                    var result = JSON.parse(data);
+                        var rabais = result.rabais;
+                        alert(rabais);
 
-                    var string = "<div class='row'>" + "<div class='col-md-10'>" + result.service_titre + "</div>" +
-                        "<div class='col-md-2'>" + result.tarif + "</div>" + "</div>" + "<div class='row'>" +
-                        "<div class='col-md-12'>" + result.service_description + "</div>" + "</div>" + "<div class='row'>" +
-                        "<div class='col-md-12'>" + "<a href='#' id='panierService_" + result.pk_service + "'" + ">Ajouter au panier</a>" + "</div>" + "</div>";
+                        if (rabais != 0) {
+                            //ajouter rabais
 
+                            //Afficher nouveau total
 
+                            //mettre 1 dans nbrRabais
+                            $.post("../../scripts/khfglakdshfksdahkfjh.php", {"nbrRabais": 1});
+                            alert("Rabais ajouté!");
+                        }
+                        else
+                            alert("Rabais refusé!");
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        alert(JSON.stringify(jqXHR) + " " + textStatus + " " + errorThrown);
+                        //alert("error occurred");
+                    }
+                });
 
-                    $("#requete").html(string);
-                },
-                error: function(jqXHR,textStatus,errorThrown){
-                    alert(JSON.stringify(jqXHR)+" "+textStatus+" "+errorThrown);
-                    //alert("error occurred");
-                }
+                } else
+                    alert("1 rabais par achat!");
             });
-        });
-
-        //$().on('click', function(event) {
-        $(document).on('click', "a[id^='panierService_']", function(){
-
-            //Aller chercher l'id du service
-            var IdPanier = event.target.id;
-            console.log(IdPanier);
-            var res = IdPanier.split("_");
-            console.log(res[1]);
-
-            $.post("../../scripts/AjouterServicePanier.php", {"id_service": res[1]});
-            location.reload();
-        });
 
     });
 
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+    //Retirer un service
+    $(document).on('click', "a[id^='retirer_service_']", function(){
+
+        //Aller chercher l'id du service
+        var IdPanier = event.target.id;
+        console.log(IdPanier);
+        var res = IdPanier.split("_");
+        console.log(res[2]);
+
+        $.post("../../scripts/RetirerServicePanier.php", {"id_service": res[2]});
+        location.reload();
+
+    });
 
 
 </script>

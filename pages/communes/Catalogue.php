@@ -370,69 +370,6 @@ $dbh = db_connect();  ?>
             }
         }
 
-
-        $(document).ready(function() {
-
-            //rabais promotionnel
-            //Vérifier si un rabais a été appliqué
-            if ($_SESSION["nbrRabais"] == 0)
-                alert("1 rabais par achat!");
-            else {
-                //click sur boutton valider
-                $("img[id^='ajouterPanier']").click(function (event) {
-
-                    //Aller chercher la valeur du code promontionnel
-
-                    //separer la string pour avoir l'id
-                    var res = IdPanier.split("_");
-                    console.log("Test");
-
-                    //string qui contient id du service pour l'envoyer dans la rqt ajax
-                    var dataString = {'rabais': res[1]};
-
-                    $.ajax({
-                        type: "POST",
-                        url: "../../scripts/ajouterRabais.php",
-                        data: dataString,
-                        success: function (data) {
-                            var result = JSON.parse(data);
-
-                            var rabais = result.rabais;
-                            alert(rabais);
-
-                            if (rabais != 0)
-                                //ajouter rabais
-
-                                //Afficher nouveau total
-
-                                alert("Rabais ajouté!");
-                            else
-                                alert("Rabais refusé!");
-                        },
-                        error: function (jqXHR, textStatus, errorThrown) {
-                            alert(JSON.stringify(jqXHR) + " " + textStatus + " " + errorThrown);
-                            //alert("error occurred");
-                        }
-                    });
-                });
-            }
-        }
-
-        //Retirer un service
-        $(document).on('click', "a[id^='panierService_']", function(){
-
-            //Aller chercher l'id du service
-            var IdPanier = event.target.id;
-            console.log(IdPanier);
-            var res = IdPanier.split("_");
-            console.log(res[1]);
-
-            $.post("../../scripts/RetirerServicePanier.php", {"id_service": res[1]});
-            location.reload();
-
-        });
-
-
     </script>
 	<footer>
 	</footer>

@@ -19,8 +19,7 @@
     $array= array();
     $_SESSION["panier"] = $array;
 
-    //variable pour savoir si un rabais a été appliqué
-    $_SESSION["nbrRabais"] = 0;
+    $_SESSION["promoAdditionnelle"] = 0;
 	?>
 	
 	<head>
