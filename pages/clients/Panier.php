@@ -72,21 +72,30 @@ try {
                             <div class='col-3'></div>
                             <div class="col-3"><?php print_r("<div class='service_price'>Tarif : " . $row["tarif"]. "$</div><br/>"); ?></div>
                             <?php $sousTotal += $row["tarif"]?>
-
-                            <?php
-                            $promos;
-                            //TODO: modifier le statement pour ne prendre que les promotions actives
-                            foreach($dbh->query('SELECT * FROM promotion JOIN ta_promotion_service ON promotion.pk_promotion = ta_promotion_service.fk_promotion AND ta_promotion_service.fk_service = '.$row["pk_service"]) as $row2) {
-
-
-
-                                //TODO: code pour afficher le prix des promotions
-
-                                $rabaisTotal += $row2["rabais"] * $row["tarif"];
-                            }
-                            ?>
-
                         </div>
+                        <?php
+                        $promos;
+                        //modifier le statement pour ne prendre que les promotions actives
+                        $date = date("Y-m-d");
+                        foreach($dbh->query('SELECT * FROM promotion JOIN ta_promotion_service ON promotion.pk_promotion = ta_promotion_service.fk_promotion AND ta_promotion_service.fk_service = '.$row["pk_service"]
+                            . " WHERE date_debut >= " . $date . " AND date_fin <= " . $date) as $row2) {
+
+
+
+                            //code pour afficher le prix des promotions
+                            ?>
+                            <div class="row">
+                                <div class='col-6'>
+                                    <?php print_r("<div class='promo_title'>" . $row2["promotion_titre"]. "</div><br/>"); ?>
+                                </div>
+                                <div class='col-3'></div>
+                                <div class="col-3"><?php print_r("<div class='promo_price'> -". $row2["rabais"] * $row["tarif"]. "$</div><br/>"); ?></div>
+                            </div>
+                            <?php
+                            $rabaisTotal += $row2["rabais"] * $row["tarif"];
+                        }
+                        ?>
+
                     </div>
                 </div>
                 <div class="row">
