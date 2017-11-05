@@ -58,7 +58,7 @@ $dbh = db_connect();
     $promoAdditionnelle = 0;
     $id_service_panier_tableau = 0;
     try {
-    foreach($_SESSION["panier"] as $id_service_panier)
+    foreach($_SESSION["panier2"] as $id_service_panier)
     foreach($dbh->query('SELECT * from service WHERE pk_service = '.$id_service_panier) as $row) {
     ?>
     <div class='row'>
@@ -152,7 +152,7 @@ $dbh = db_connect();
             Rabais additionnel
         </div>
         <div class="col-md-3">
-            <?php echo $_SESSION["RabaisPromotionnel"] ?>
+            <?php echo $_SESSION["RabaisPromotionnel2"] ?>
         </div>
     </div>
     <div class="row">
@@ -161,7 +161,7 @@ $dbh = db_connect();
             Total
         </div>
         <div class="col-md-3">
-            <?php echo $sousTotal - $_SESSION["RabaisPromotionnel"] ?>
+            <?php echo $sousTotal - $_SESSION["RabaisPromotionnel2"] ?>
         </div>
     </div>
 
