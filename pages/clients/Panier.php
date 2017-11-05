@@ -30,6 +30,10 @@ $dbh = db_connect();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
 </head>
@@ -182,6 +186,34 @@ try {
 
     <div class='col-1'></div>
 </div>
+
+<div id="paypal-button"></div>
+<script>
+    paypal.Button.render({
+        env: 'sandbox',  // Or 'sandbox'
+        client: {
+            sandbox:    'AVTdCibv8td2mvA40JE5nY0NDKY8CbRkc6vE9sYG8Buhn_lQ2RKJUYyKCmBFyt-O89zrVPNCdqQUsIKo',
+            production: 'AVTdCibv8td2mvA40JE5nY0NDKY8CbRkc6vE9sYG8Buhn_lQ2RKJUYyKCmBFyt-O89zrVPNCdqQUsIKo'
+        },
+        commit: true,       // Show 'Pay Now' button
+        payment: function () {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: '1.00', currency: 'USD' }
+                        }
+                    ]
+                }
+            });
+        },
+        onAuthorize: function (data, actions) {
+            return actions.payment.execute().then(function() {
+                window.alert('Payment Complete!');
+            });
+        }
+    }, '#paypal-button');
+</script>
 
 </body>
 <script type="text/javascript">
