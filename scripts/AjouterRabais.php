@@ -17,11 +17,11 @@ $stmt = $dbh1->prepare('SELECT fk_promotion FROM ta_promotion_service a WHERE a.
 $stmt->execute(['rabais' => $rabais]);
 $rqt = $stmt->fetch();
 
-if ($rqt[1].fk_promontion != "")
+if ($rqt["fk_promotion"] != "")
 {
     $stmt = $dbh1->prepare('SELECT rabais FROM promotion a join ta_promotion_service b on a.pk_promotion = b.fk_promotion WHERE b.fk_promotion=:id');
 
-    $stmt->execute(['id' => $rqt[1].fk_promontion]);
+    $stmt->execute(['id' => $rqt["fk_promotion"]]);
     $result = $stmt->fetch();
 }
 

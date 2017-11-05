@@ -154,10 +154,10 @@ try {
                     <div class="col-md-4">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="row">Sous-total: <?php echo $sousTotal?></div>
+                                <div class="row" id="sousTotal">Sous-total: <?php echo $_SESSION["sousTotal"] = $sousTotal?></div>
                                 <div class="row">Promotions: <?php echo $rabaisTotal?></div>
-                                <div class="row" id="promoAddtionnelle">Rabais additionnel: <?php echo $_SESSION["promoAdditionnelle"];?></div>
-                                <div class="row">Total: <?php echo $sousTotal - $rabaisTotal - $_SESSION["promoAdditionnelle"];?></div>
+                                <div class="row" id="promoAddtionnelle">Rabais additionnel: <?php echo $_SESSION["RabaisPromotionnel"] = $_SESSION["sousTotal"] * $_SESSION["promoAdditionnelle"];?></div>
+                                <div class="row">Total: <?php echo $_SESSION["Total"] = $sousTotal - $rabaisTotal - $_SESSION["RabaisPromotionnel"];?></div>
                             </div>
                         </div>
                         <div class="row">
@@ -185,44 +185,54 @@ try {
 
                 //Vérifier si un rabais a été appliqué
                 var myElement = document.getElementById("promoAddtionnelle");
-                if ( myElement == 0)
+                console.log(myElement.innerText);
+                var res = myElement.innerText.split(" ");
+                console.log(res[2]);
+
+                if ( res[2] === "0")
                 {
-                //Aller chercher la valeur du code promontionnel
 
-                //separer la string pour avoir l'id
-                var res = IdPanier.split("_");
-                console.log("Test");
+                    //Aller chercher la valeur du code promontionnel
+                    var promo = document.getElementById("codepromo");
+                    console.log(promo.value);
 
-                //string qui contient id du service pour l'envoyer dans la rqt ajax
-                var dataString = {'rabais': res[1]};
+                    //string qui contient id du service pour l'envoyer dans la rqt ajax
+                    var dataString = {'rabais': promo.value};
 
-                $.ajax({
-                    type: "POST",
-                    url: "../../scripts/ajouterRabais.php",
-                    data: dataString,
-                    success: function (data) {
-                        var result = JSON.parse(data);
+                    $.ajax({
+                        type: "POST",
+                        url: "../../scripts/ajouterRabais.php",
+                        data: dataString,
+                        success: function (data) {
+                            console.log("sortie rqt : " + data);
+                            if (data != "0") {
+                                var result = JSON.parse(data);
 
-                        var rabais = result.rabais;
-                        alert(rabais);
+                                var rabais = result.rabais;
+                                console.log(rabais);
 
-                        if (rabais != 0) {
-                            //ajouter rabais
+                                //Calculer le rabais
+                                /*var STString = document.getElementById("sousTotal").innerText;
+                                var res = STString.split(" ");
+                                var soustotal = parseFloat(res[1]);
+                                console.log(soustotal);
+                                rabais = parseFloat(rabais);
+                                rabais = soustotal * rabais;*/
 
-                            //Afficher nouveau total
+                                //Afficher nouveau total
+                                $.post("../../scripts/MontantRabais.php", {"rabais": rabais});
 
-                            //mettre 1 dans nbrRabais
-                            $.post("../../scripts/khfglakdshfksdahkfjh.php", {"nbrRabais": 1});
-                            alert("Rabais ajouté!");
+                                location.reload();
+                                alert("Rabais valide!");
+                            }
+                            else
+                                alert("Rabais refusé!");
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert(JSON.stringify(jqXHR) + " " + textStatus + " " + errorThrown);
+                            //alert("error occurred");
                         }
-                        else
-                            alert("Rabais refusé!");
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        alert(JSON.stringify(jqXHR) + " " + textStatus + " " + errorThrown);
-                        //alert("error occurred");
-                    }
-                });
+                    });
 
                 } else
                     alert("1 rabais par achat!");

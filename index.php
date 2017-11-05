@@ -20,6 +20,9 @@
     $_SESSION["panier"] = $array;
 
     $_SESSION["promoAdditionnelle"] = 0;
+    $_SESSION["sousTotal"] = 0;
+    $_SESSION["Total"] = 0;
+    $_SESSION["RabaisPromotionnel"] = 0;
 	?>
 	
 	<head>
