@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff1cc02e-5fe3-473c-8738-c1eb5ce6c96c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/scripts/EmailClient.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/clients/Panier.php" afterPath="$PROJECT_DIR$/pages/clients/Panier.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,8 +18,8 @@
       <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="35" />
+            <state relative-caret-position="646">
+              <caret line="96" column="18" lean-forward="true" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="44" />
               <folding>
                 <marker date="1509846484038" expanded="true" signature="1008:1025" ph="..." />
                 <marker date="1509846484038" expanded="true" signature="3600:3625" ph="SELECT * fro... utilisateur" />
@@ -42,24 +44,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Panier.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Panier.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/clients/Panier.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="496">
-              <caret line="215" column="47" lean-forward="false" selection-start-line="215" selection-start-column="47" selection-end-line="215" selection-end-column="47" />
+            <state relative-caret-position="465">
+              <caret line="217" column="52" lean-forward="true" selection-start-line="217" selection-start-column="52" selection-end-line="217" selection-end-column="52" />
               <folding>
-                <marker date="1509899587647" expanded="true" signature="2370:2411" ph="SELECT * fro... service" />
-                <marker date="1509899587647" expanded="true" signature="3659:3912" ph="SELECT * FRO... promotion" />
+                <marker date="1509911185349" expanded="true" signature="2370:2411" ph="SELECT * fro... service" />
+                <marker date="1509911185349" expanded="true" signature="3659:3912" ph="SELECT * FRO... promotion" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MontantRabais.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/MontantRabais.php">
+      <file leaf-file-name="InfoClient.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/InfoClient.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+            <state relative-caret-position="51">
+              <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -73,6 +75,28 @@
               <folding>
                 <marker date="1509846484042" expanded="true" signature="228:297" ph="SELECT fk_pr... ta_promotion_service" />
                 <marker date="1509846484042" expanded="true" signature="427:545" ph="SELECT rabai... promotion" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AjouterServicePanier.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/AjouterServicePanier.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmailClient.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/EmailClient.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+              <folding>
+                <marker date="1509911833939" expanded="true" signature="203:262" ph="SELECT courr... utilisateur" />
               </folding>
             </state>
           </provider>
@@ -116,6 +140,7 @@
         <option value="$PROJECT_DIR$/scripts/MontantRabais.php" />
         <option value="$PROJECT_DIR$/pages/clients/Confirmation.php" />
         <option value="$PROJECT_DIR$/pages/clients/Panier.php" />
+        <option value="$PROJECT_DIR$/scripts/EmailClient.php" />
       </list>
     </option>
   </component>
@@ -136,7 +161,7 @@
     <servers />
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="15" />
     <option name="y" value="253" />
     <option name="width" value="1400" />
@@ -267,10 +292,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76585000" />
+    <option name="totallyTimeSpent" value="78514000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="1176" extended-state="6" />
+    <frame x="-8" y="-8" width="1616" height="1176" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -315,19 +340,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/administrateurs/Facture.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3009">
-          <caret line="177" column="19" lean-forward="true" selection-start-line="177" selection-start-column="19" selection-end-line="177" selection-end-column="19" />
-          <folding>
-            <marker date="1508303013310" expanded="true" signature="2034:2195" ph="select * fro... client" />
-            <marker date="1508303013310" expanded="true" signature="3290:3370" ph="SELECT SUM(t... ta_facture_service" />
-            <marker date="1508303013310" expanded="true" signature="4118:4229" ph="SELECT * FRO... ta_facture_service" />
-            <marker date="1508303013310" expanded="true" signature="5029:5303" ph="SELECT pk_se... service" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/communes/Profil.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -628,14 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/InfoClient.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/communes/Panier.php" />
     <entry file="file://$PROJECT_DIR$/pages/communes/Profil.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -677,73 +681,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/AjouterRabais.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="23" column="51" lean-forward="true" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
-          <folding>
-            <marker date="1509846484042" expanded="true" signature="228:297" ph="SELECT fk_pr... ta_promotion_service" />
-            <marker date="1509846484042" expanded="true" signature="427:545" ph="SELECT rabai... promotion" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/AjouterServicePanier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="8" column="16" lean-forward="true" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/administrateurs/Facture.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="206" column="24" lean-forward="true" selection-start-line="206" selection-start-column="24" selection-end-line="206" selection-end-column="24" />
-          <folding>
-            <marker date="1508303013310" expanded="true" signature="2034:2195" ph="select * fro... client" />
-            <marker date="1508303013310" expanded="true" signature="3290:3370" ph="SELECT SUM(t... ta_facture_service" />
-            <marker date="1508303013310" expanded="true" signature="4118:4229" ph="SELECT * FRO... ta_facture_service" />
-            <marker date="1508303013310" expanded="true" signature="5029:5303" ph="SELECT pk_se... service" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="24" column="4" lean-forward="false" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="35" />
-          <folding>
-            <marker date="1509846484038" expanded="true" signature="1008:1025" ph="..." />
-            <marker date="1509846484038" expanded="true" signature="3600:3625" ph="SELECT * fro... utilisateur" />
-            <marker date="1509846484038" expanded="true" signature="4367:4384" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/clients/Panier.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="496">
-          <caret line="215" column="47" lean-forward="false" selection-start-line="215" selection-start-column="47" selection-end-line="215" selection-end-column="47" />
-          <folding>
-            <marker date="1509899587647" expanded="true" signature="2370:2411" ph="SELECT * fro... service" />
-            <marker date="1509899587647" expanded="true" signature="3659:3912" ph="SELECT * FRO... promotion" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/communes/Erreur404.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="51" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/MontantRabais.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
           <folding />
         </state>
       </provider>
@@ -761,6 +702,87 @@
         <state relative-caret-position="697">
           <caret line="41" column="30" lean-forward="true" selection-start-line="41" selection-start-column="30" selection-end-line="41" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/MontantRabais.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="29" lean-forward="false" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="96" column="18" lean-forward="true" selection-start-line="96" selection-start-column="17" selection-end-line="96" selection-end-column="44" />
+          <folding>
+            <marker date="1509846484038" expanded="true" signature="1008:1025" ph="..." />
+            <marker date="1509846484038" expanded="true" signature="3600:3625" ph="SELECT * fro... utilisateur" />
+            <marker date="1509846484038" expanded="true" signature="4367:4384" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/administrateurs/Facture.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="206" column="24" lean-forward="true" selection-start-line="206" selection-start-column="24" selection-end-line="206" selection-end-column="24" />
+          <folding>
+            <marker date="1508303013310" expanded="true" signature="2034:2195" ph="select * fro... client" />
+            <marker date="1508303013310" expanded="true" signature="3290:3370" ph="SELECT SUM(t... ta_facture_service" />
+            <marker date="1508303013310" expanded="true" signature="4118:4229" ph="SELECT * FRO... ta_facture_service" />
+            <marker date="1508303013310" expanded="true" signature="5029:5303" ph="SELECT pk_se... service" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/InfoClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/AjouterServicePanier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/AjouterRabais.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="23" column="51" lean-forward="true" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
+          <folding>
+            <marker date="1509846484042" expanded="true" signature="228:297" ph="SELECT fk_pr... ta_promotion_service" />
+            <marker date="1509846484042" expanded="true" signature="427:545" ph="SELECT rabai... promotion" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/clients/Panier.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="217" column="52" lean-forward="true" selection-start-line="217" selection-start-column="52" selection-end-line="217" selection-end-column="52" />
+          <folding>
+            <marker date="1509911185349" expanded="true" signature="2370:2411" ph="SELECT * fro... service" />
+            <marker date="1509911185349" expanded="true" signature="3659:3912" ph="SELECT * FRO... promotion" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/EmailClient.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="17" column="32" lean-forward="true" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+          <folding>
+            <marker date="1509911833939" expanded="true" signature="203:262" ph="SELECT courr... utilisateur" />
+          </folding>
         </state>
       </provider>
     </entry>

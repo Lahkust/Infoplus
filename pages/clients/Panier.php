@@ -175,7 +175,8 @@ try {
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <button type="button" class="btn btn-secondary btn-lg btn-block" id="btn_payer">Payer</button>
+                                <div id="paypal-button"></div>
+                                <!--<button type="button" class="btn btn-secondary btn-lg btn-block" id="btn_payer">Payer</button>-->
                             </div>
                         </div>
 
@@ -187,8 +188,9 @@ try {
     <div class='col-1'></div>
 </div>
 
-<div id="paypal-button"></div>
-<script>
+</body>
+<script type="text/javascript">
+
     paypal.Button.render({
         env: 'sandbox',  // Or 'sandbox'
         client: {
@@ -208,11 +210,12 @@ try {
             });
         },
         onAuthorize: function (data, actions) {
+            //Marche pas en sandbox
             /*return actions.payment.execute().then(function() {
                 //location.href = 'Confirmation.php';
             });*/
-            // Get the payment details
 
+            $.post("../../scripts/EmailClient.php");
             location.href = 'Confirmation.php';
 
         },
@@ -223,10 +226,7 @@ try {
         }
 
     }, '#paypal-button');
-</script>
 
-</body>
-<script type="text/javascript">
 
     $(document).ready(function() {
 
