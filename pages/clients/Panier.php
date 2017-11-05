@@ -193,25 +193,35 @@ try {
         env: 'sandbox',  // Or 'sandbox'
         client: {
             sandbox:    'AVTdCibv8td2mvA40JE5nY0NDKY8CbRkc6vE9sYG8Buhn_lQ2RKJUYyKCmBFyt-O89zrVPNCdqQUsIKo',
-            production: 'AVTdCibv8td2mvA40JE5nY0NDKY8CbRkc6vE9sYG8Buhn_lQ2RKJUYyKCmBFyt-O89zrVPNCdqQUsIKo'
+            production: '<insert production client id>'
         },
         commit: true,       // Show 'Pay Now' button
-        payment: function () {
+        payment: function(data, actions) {
             return actions.payment.create({
                 payment: {
                     transactions: [
                         {
-                            amount: { total: '1.00', currency: 'USD' }
+                            amount: { total: <?php echo $_SESSION["Total"]; ?>, currency: 'CAD' }
                         }
                     ]
                 }
             });
         },
         onAuthorize: function (data, actions) {
-            return actions.payment.execute().then(function() {
-                window.alert('Payment Complete!');
-            });
+            /*return actions.payment.execute().then(function() {
+                //location.href = 'Confirmation.php';
+            });*/
+            // Get the payment details
+
+            location.href = 'Confirmation.php';
+
+        },
+
+        onCancel: function(data, actions) {
+            // Show a cancel page or return to cart
+            location.href = 'Annulation.php';
         }
+
     }, '#paypal-button');
 </script>
 
